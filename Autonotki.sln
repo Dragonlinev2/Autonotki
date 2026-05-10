@@ -1,0 +1,58 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Autonotki.Api", "Autonotki.Api\Autonotki.Api.csproj", "{F42D388C-B65B-4CF1-B6C8-F0DDE4877CC2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Autonotki.Application", "Autonotki.Application\Autonotki.Application.csproj", "{B1734695-34DA-43E8-B6D5-3E623D71F839}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Autonotki.Domain", "Autonotki.Domain\Autonotki.Domain.csproj", "{F53E0D9B-DAB9-49AF-B751-31D68B9AA340}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Autonotki.Infrastructure", "Autonotki.Infrastructure\Autonotki.Infrastructure.csproj", "{27CFEF3F-DDEF-4D4B-A728-8571149823D4}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Autonotki.Client", "Autonotki.Client", "{BB440481-6F28-4C11-8D63-ADF93A35E4BB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Autonotki.Client", "Autonotki.Client\Autonotki.Client\Autonotki.Client.csproj", "{FB03E17C-7625-4070-A03D-1BBC89F1D8A1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Autonotki.Client.Desktop", "Autonotki.Client\Autonotki.Client.Desktop\Autonotki.Client.Desktop.csproj", "{5F6210D4-BF92-4199-9953-AE890F6B6830}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F42D388C-B65B-4CF1-B6C8-F0DDE4877CC2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F42D388C-B65B-4CF1-B6C8-F0DDE4877CC2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F42D388C-B65B-4CF1-B6C8-F0DDE4877CC2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F42D388C-B65B-4CF1-B6C8-F0DDE4877CC2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B1734695-34DA-43E8-B6D5-3E623D71F839}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B1734695-34DA-43E8-B6D5-3E623D71F839}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B1734695-34DA-43E8-B6D5-3E623D71F839}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B1734695-34DA-43E8-B6D5-3E623D71F839}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F53E0D9B-DAB9-49AF-B751-31D68B9AA340}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F53E0D9B-DAB9-49AF-B751-31D68B9AA340}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F53E0D9B-DAB9-49AF-B751-31D68B9AA340}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F53E0D9B-DAB9-49AF-B751-31D68B9AA340}.Release|Any CPU.Build.0 = Release|Any CPU
+		{27CFEF3F-DDEF-4D4B-A728-8571149823D4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{27CFEF3F-DDEF-4D4B-A728-8571149823D4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{27CFEF3F-DDEF-4D4B-A728-8571149823D4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{27CFEF3F-DDEF-4D4B-A728-8571149823D4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FB03E17C-7625-4070-A03D-1BBC89F1D8A1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FB03E17C-7625-4070-A03D-1BBC89F1D8A1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FB03E17C-7625-4070-A03D-1BBC89F1D8A1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FB03E17C-7625-4070-A03D-1BBC89F1D8A1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5F6210D4-BF92-4199-9953-AE890F6B6830}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5F6210D4-BF92-4199-9953-AE890F6B6830}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5F6210D4-BF92-4199-9953-AE890F6B6830}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5F6210D4-BF92-4199-9953-AE890F6B6830}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{FB03E17C-7625-4070-A03D-1BBC89F1D8A1} = {BB440481-6F28-4C11-8D63-ADF93A35E4BB}
+		{5F6210D4-BF92-4199-9953-AE890F6B6830} = {BB440481-6F28-4C11-8D63-ADF93A35E4BB}
+	EndGlobalSection
+EndGlobal

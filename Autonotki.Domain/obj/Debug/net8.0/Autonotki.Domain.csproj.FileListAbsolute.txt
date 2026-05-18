@@ -1,0 +1,12 @@
+/home/dragonline/Dev/Autonotkiv2/Autonotki.Domain/bin/Debug/net8.0/Autonotki.Domain.deps.json
+/home/dragonline/Dev/Autonotkiv2/Autonotki.Domain/bin/Debug/net8.0/Autonotki.Domain.dll
+/home/dragonline/Dev/Autonotkiv2/Autonotki.Domain/bin/Debug/net8.0/Autonotki.Domain.pdb
+/home/dragonline/Dev/Autonotkiv2/Autonotki.Domain/obj/Debug/net8.0/Autonotki.Domain.GeneratedMSBuildEditorConfig.editorconfig
+/home/dragonline/Dev/Autonotkiv2/Autonotki.Domain/obj/Debug/net8.0/Autonotki.Domain.AssemblyInfoInputs.cache
+/home/dragonline/Dev/Autonotkiv2/Autonotki.Domain/obj/Debug/net8.0/Autonotki.Domain.AssemblyInfo.cs
+/home/dragonline/Dev/Autonotkiv2/Autonotki.Domain/obj/Debug/net8.0/Autonotki.Domain.csproj.CoreCompileInputs.cache
+/home/dragonline/Dev/Autonotkiv2/Autonotki.Domain/obj/Debug/net8.0/Autonotki.Domain.sourcelink.json
+/home/dragonline/Dev/Autonotkiv2/Autonotki.Domain/obj/Debug/net8.0/Autonotki.Domain.dll
+/home/dragonline/Dev/Autonotkiv2/Autonotki.Domain/obj/Debug/net8.0/refint/Autonotki.Domain.dll
+/home/dragonline/Dev/Autonotkiv2/Autonotki.Domain/obj/Debug/net8.0/Autonotki.Domain.pdb
+/home/dragonline/Dev/Autonotkiv2/Autonotki.Domain/obj/Debug/net8.0/ref/Autonotki.Domain.dll

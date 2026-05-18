@@ -9,3 +9,4 @@
 /home/dragonline/Dev/Autonotkiv2/Autonotki.Application/obj/Debug/net8.0/refint/Autonotki.Application.dll
 /home/dragonline/Dev/Autonotkiv2/Autonotki.Application/obj/Debug/net8.0/Autonotki.Application.pdb
 /home/dragonline/Dev/Autonotkiv2/Autonotki.Application/obj/Debug/net8.0/ref/Autonotki.Application.dll
+/home/dragonline/Dev/Autonotkiv2/Autonotki.Application/obj/Debug/net8.0/Autonotki.Application.sourcelink.json

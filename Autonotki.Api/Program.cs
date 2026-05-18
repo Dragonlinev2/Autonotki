@@ -1,13 +1,25 @@
+using Autonotki.Infrastructure.Services;
+
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+// Swagger / OpenAPI
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+// Rejestracja AuthService
+builder.Services.AddSingleton<AuthService>(sp =>
+{
+    var config = sp.GetRequiredService<IConfiguration>();
+
+    string conn =
+        config.GetConnectionString("Postgres")!;
+
+    return new AuthService(conn);
+});
+
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
+// Middleware
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
@@ -16,29 +28,51 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
-var summaries = new[]
-{
-    "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-};
 
-app.MapGet("/weatherforecast", () =>
+// Endpoint logowania
+app.MapPost("/login", async (
+    LoginRequest request,
+    AuthService authService) =>
 {
-    var forecast =  Enumerable.Range(1, 5).Select(index =>
-        new WeatherForecast
-        (
-            DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
-            Random.Shared.Next(-20, 55),
-            summaries[Random.Shared.Next(summaries.Length)]
-        ))
-        .ToArray();
-    return forecast;
-})
-.WithName("GetWeatherForecast")
-.WithOpenApi();
+    // Walidacja
+    if (string.IsNullOrWhiteSpace(request.Login) ||
+        string.IsNullOrWhiteSpace(request.Haslo))
+    {
+        return Results.BadRequest(new
+        {
+            message = "Login i hasło są wymagane"
+        });
+    }
+
+    try
+    {
+        var rola = await authService.LoginAsync(
+            request.Login,
+            request.Haslo
+        );
+
+        if (rola == null)
+        {
+            return Results.Unauthorized();
+        }
+
+        return Results.Ok(new
+        {
+            message = "Zalogowano poprawnie",
+            rola = rola
+        });
+    }
+    catch (Exception ex)
+    {
+        return Results.Problem(
+            title: "Błąd połączenia z bazą",
+            detail: ex.Message
+        );
+    }
+});
 
 app.Run();
 
-record WeatherForecast(DateOnly Date, int TemperatureC, string? Summary)
-{
-    public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
-}
+
+// DTO request
+record LoginRequest(string Login, string Haslo);

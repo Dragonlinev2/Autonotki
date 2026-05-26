@@ -1,0 +1,54 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             x:Class="Autonotki.Client.Controls.ZlecenieMiniCard">
+
+    <!--
+        Properties exposed by code-behind or set via DataTemplate:
+          CarName, ServiceType, Time, ClientName
+    -->
+
+    <Border Background="{StaticResource CardBackgroundBrush}"
+            BorderBrush="{StaticResource CardBorderBrush}"
+            BorderThickness="1"
+            CornerRadius="8"
+            Padding="16,12"
+            Margin="0,0,0,10">
+
+        <Grid ColumnDefinitions="*,Auto,Auto">
+
+            <!-- Left: Car + Service info -->
+            <StackPanel Grid.Column="0"
+                        VerticalAlignment="Center"
+                        Spacing="4">
+                <TextBlock Text="{Binding CarName}"
+                           FontSize="15"
+                           FontWeight="Bold"
+                           Foreground="{StaticResource TextPrimaryBrush}"/>
+                <TextBlock Text="{Binding ServiceType}"
+                           FontSize="13"
+                           Foreground="{StaticResource TextSecondaryBrush}"
+                           TextWrapping="Wrap"/>
+            </StackPanel>
+
+            <!-- Vertical separator -->
+            <Border Grid.Column="1"
+                    Classes="VerticalSeparator"/>
+
+            <!-- Right: Time + Client -->
+            <StackPanel Grid.Column="2"
+                        VerticalAlignment="Center"
+                        Spacing="4"
+                        MinWidth="120">
+                <TextBlock Text="{Binding TimeDisplay}"
+                           FontSize="14"
+                           FontWeight="SemiBold"
+                           Foreground="{StaticResource TextPrimaryBrush}"/>
+                <TextBlock Text="{Binding ClientName}"
+                           FontSize="13"
+                           Foreground="{StaticResource TextSecondaryBrush}"/>
+            </StackPanel>
+
+        </Grid>
+    </Border>
+
+</UserControl>

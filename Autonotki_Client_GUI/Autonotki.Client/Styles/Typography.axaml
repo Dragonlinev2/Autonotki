@@ -1,0 +1,50 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <!-- Font Sizes -->
+    <x:Double x:Key="FontSizeXS">11</x:Double>
+    <x:Double x:Key="FontSizeSM">13</x:Double>
+    <x:Double x:Key="FontSizeMD">15</x:Double>
+    <x:Double x:Key="FontSizeLG">17</x:Double>
+    <x:Double x:Key="FontSizeXL">20</x:Double>
+    <x:Double x:Key="FontSize2XL">26</x:Double>
+    <x:Double x:Key="FontSize3XL">32</x:Double>
+
+    <!-- Page Header Style -->
+    <ControlTheme x:Key="PageHeaderStyle" TargetType="TextBlock">
+        <Setter Property="FontSize" Value="26"/>
+        <Setter Property="FontWeight" Value="Bold"/>
+        <Setter Property="Foreground" Value="{StaticResource TextPrimaryBrush}"/>
+        <Setter Property="Margin" Value="0,0,0,24"/>
+        <Setter Property="LetterSpacing" Value="1"/>
+    </ControlTheme>
+
+    <!-- Section Header Style -->
+    <ControlTheme x:Key="SectionHeaderStyle" TargetType="TextBlock">
+        <Setter Property="FontSize" Value="18"/>
+        <Setter Property="FontWeight" Value="SemiBold"/>
+        <Setter Property="Foreground" Value="{StaticResource TextPrimaryBrush}"/>
+        <Setter Property="Margin" Value="0,0,0,12"/>
+    </ControlTheme>
+
+    <!-- Card Title Style -->
+    <ControlTheme x:Key="CardTitleStyle" TargetType="TextBlock">
+        <Setter Property="FontSize" Value="15"/>
+        <Setter Property="FontWeight" Value="Bold"/>
+        <Setter Property="Foreground" Value="{StaticResource TextPrimaryBrush}"/>
+    </ControlTheme>
+
+    <!-- Body Text Style -->
+    <ControlTheme x:Key="BodyTextStyle" TargetType="TextBlock">
+        <Setter Property="FontSize" Value="13"/>
+        <Setter Property="Foreground" Value="{StaticResource TextSecondaryBrush}"/>
+        <Setter Property="TextWrapping" Value="Wrap"/>
+    </ControlTheme>
+
+    <!-- Muted Label Style -->
+    <ControlTheme x:Key="LabelStyle" TargetType="TextBlock">
+        <Setter Property="FontSize" Value="12"/>
+        <Setter Property="Foreground" Value="{StaticResource TextMutedBrush}"/>
+    </ControlTheme>
+
+</ResourceDictionary>

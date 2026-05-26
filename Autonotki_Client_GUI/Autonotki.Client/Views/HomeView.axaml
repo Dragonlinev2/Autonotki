@@ -1,0 +1,74 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:controls="clr-namespace:Autonotki.Client.Controls"
+             x:Class="Autonotki.Client.Views.HomeView"
+             Background="{StaticResource PageBackgroundBrush}">
+
+    <!--
+        ViewModel: HomeViewModel
+          - CalendarVM: MiniCalendarViewModel
+          - TodayLabel: string ("11 maja")
+          - TodaysOrders: ObservableCollection<ZlecenieMiniCardViewModel>
+    -->
+
+    <Grid RowDefinitions="Auto,*">
+
+        <!-- Top Navigation Bar -->
+        <controls:TopNavBar Grid.Row="0"
+                            DataContext="{Binding NavVM}"/>
+
+        <!-- Page Content -->
+        <ScrollViewer Grid.Row="1"
+                      Padding="40,32">
+
+            <Grid ColumnDefinitions="*,400" RowDefinitions="Auto,*"
+                  MaxWidth="1200"
+                  HorizontalAlignment="Left">
+
+                <!-- Page title -->
+                <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"
+                           Text="STRONA GŁÓWNA"
+                           FontSize="26"
+                           FontWeight="Bold"
+                           Foreground="{StaticResource TextPrimaryBrush}"
+                           Margin="0,0,0,28"
+                           LetterSpacing="1"/>
+
+                <!-- Left: Mini Calendar -->
+                <controls:MiniCalendar Grid.Row="1" Grid.Column="0"
+                                       DataContext="{Binding CalendarVM}"
+                                       Margin="0,0,32,0"
+                                       VerticalAlignment="Top"/>
+
+                <!-- Right: Orders sidebar -->
+                <StackPanel Grid.Row="1" Grid.Column="1">
+
+                    <TextBlock Text="ZLECENIA"
+                               FontSize="18"
+                               FontWeight="Bold"
+                               Foreground="{StaticResource TextPrimaryBrush}"
+                               Margin="0,0,0,8"/>
+
+                    <TextBlock Text="{Binding TodayLabel}"
+                               FontSize="14"
+                               FontWeight="SemiBold"
+                               Foreground="{StaticResource TextSecondaryBrush}"
+                               Margin="0,0,0,14"/>
+
+                    <!-- Today's order cards list -->
+                    <ItemsControl ItemsSource="{Binding TodaysOrders}">
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <controls:ZlecenieMiniCard DataContext="{Binding}"/>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+
+                </StackPanel>
+
+            </Grid>
+        </ScrollViewer>
+
+    </Grid>
+
+</UserControl>

@@ -1,0 +1,63 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:controls="clr-namespace:Autonotki.Client.Controls"
+             x:Class="Autonotki.Client.Views.DodajZlecenieView"
+             Background="{StaticResource PageBackgroundBrush}">
+
+    <!--
+        ViewModel: DodajZlecenieViewModel (extends ZlecenieFormViewModel)
+          - SaveCommand: ICommand (calls API to create new order)
+    -->
+
+    <Grid RowDefinitions="Auto,*">
+
+        <!-- Top Navigation Bar -->
+        <controls:TopNavBar Grid.Row="0" DataContext="{Binding NavVM}"/>
+
+        <!-- Page Content -->
+        <ScrollViewer Grid.Row="1" Padding="40,32">
+
+            <StackPanel MaxWidth="900" HorizontalAlignment="Left" Spacing="24">
+
+                <!-- Page Title -->
+                <TextBlock Text="DODAJ ZLECENIE"
+                           FontSize="26"
+                           FontWeight="Bold"
+                           Foreground="{StaticResource TextPrimaryBrush}"
+                           LetterSpacing="1"/>
+
+                <!-- Shared form panel -->
+                <controls:ZlecenieFormPanel DataContext="{Binding FormVM}"/>
+
+                <!-- Extra row: Typ nadwozia + Save button -->
+                <Grid ColumnDefinitions="*,*">
+
+                    <!-- Typ nadwozia -->
+                    <StackPanel Grid.Column="0"
+                                Margin="0,0,16,0"
+                                Spacing="4">
+                        <TextBlock Text="Typ nadwozia"
+                                   FontSize="13"
+                                   Foreground="{StaticResource TextSecondaryBrush}"/>
+                        <TextBox Theme="{StaticResource FormInputStyle}"
+                                 Text="{Binding FormVM.TypNadwozia}"
+                                 Width="200"
+                                 HorizontalAlignment="Left"/>
+                    </StackPanel>
+
+                    <!-- Save button aligned right -->
+                    <Button Grid.Column="1"
+                            Theme="{StaticResource PrimaryButtonStyle}"
+                            Content="Zapisz"
+                            Command="{Binding SaveCommand}"
+                            HorizontalAlignment="Right"
+                            VerticalAlignment="Bottom"/>
+
+                </Grid>
+
+            </StackPanel>
+        </ScrollViewer>
+
+    </Grid>
+
+</UserControl>

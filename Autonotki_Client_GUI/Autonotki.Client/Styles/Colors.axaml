@@ -1,0 +1,53 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <!-- Primary Brand Colors -->
+    <Color x:Key="NavyBlue">#2C3E6B</Color>
+    <Color x:Key="NavyBlueDark">#1E2D52</Color>
+    <Color x:Key="NavyBlueHover">#3A4F8A</Color>
+
+    <!-- Status Colors -->
+    <Color x:Key="OrangeStatus">#F5A623</Color>
+    <Color x:Key="OrangeDark">#E09015</Color>
+    <Color x:Key="GreenStatus">#27AE60</Color>
+    <Color x:Key="GreenDark">#1E8449</Color>
+    <Color x:Key="BlueStatus">#2980B9</Color>
+
+    <!-- Background Colors -->
+    <Color x:Key="PageBackground">#EEF0F3</Color>
+    <Color x:Key="CardBackground">#FFFFFF</Color>
+    <Color x:Key="CardBorder">#D8DCE6</Color>
+    <Color x:Key="InputBackground">#FFFFFF</Color>
+    <Color x:Key="InputBorder">#BDC3C7</Color>
+
+    <!-- Text Colors -->
+    <Color x:Key="TextPrimary">#1A1A2E</Color>
+    <Color x:Key="TextSecondary">#5A6A7A</Color>
+    <Color x:Key="TextMuted">#95A5B5</Color>
+    <Color x:Key="TextOnDark">#FFFFFF</Color>
+    <Color x:Key="TextNavInactive">#B8C4D4</Color>
+
+    <!-- Weekend/Disabled -->
+    <Color x:Key="WeekendText">#A0AABB</Color>
+    <Color x:Key="TodayHighlight">#2C3E6B</Color>
+    <Color x:Key="TodayText">#FFFFFF</Color>
+
+    <!-- Brushes -->
+    <SolidColorBrush x:Key="NavyBlueBrush" Color="{StaticResource NavyBlue}"/>
+    <SolidColorBrush x:Key="NavyBlueDarkBrush" Color="{StaticResource NavyBlueDark}"/>
+    <SolidColorBrush x:Key="NavyBlueHoverBrush" Color="{StaticResource NavyBlueHover}"/>
+    <SolidColorBrush x:Key="OrangeStatusBrush" Color="{StaticResource OrangeStatus}"/>
+    <SolidColorBrush x:Key="GreenStatusBrush" Color="{StaticResource GreenStatus}"/>
+    <SolidColorBrush x:Key="BlueStatusBrush" Color="{StaticResource BlueStatus}"/>
+    <SolidColorBrush x:Key="PageBackgroundBrush" Color="{StaticResource PageBackground}"/>
+    <SolidColorBrush x:Key="CardBackgroundBrush" Color="{StaticResource CardBackground}"/>
+    <SolidColorBrush x:Key="CardBorderBrush" Color="{StaticResource CardBorder}"/>
+    <SolidColorBrush x:Key="InputBackgroundBrush" Color="{StaticResource InputBackground}"/>
+    <SolidColorBrush x:Key="InputBorderBrush" Color="{StaticResource InputBorder}"/>
+    <SolidColorBrush x:Key="TextPrimaryBrush" Color="{StaticResource TextPrimary}"/>
+    <SolidColorBrush x:Key="TextSecondaryBrush" Color="{StaticResource TextSecondary}"/>
+    <SolidColorBrush x:Key="TextMutedBrush" Color="{StaticResource TextMuted}"/>
+    <SolidColorBrush x:Key="TextOnDarkBrush" Color="{StaticResource TextOnDark}"/>
+    <SolidColorBrush x:Key="WeekendTextBrush" Color="{StaticResource WeekendText}"/>
+
+</ResourceDictionary>

@@ -1,0 +1,195 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:controls="clr-namespace:Autonotki.Client.Controls"
+             x:Class="Autonotki.Client.Controls.ZlecenieFormPanel">
+
+    <!--
+        Shared form body for both DodajZlecenieView and EdytujZlecenieView.
+        ViewModel: ZlecenieFormViewModel
+          - PhotoSource: IBitmap? (null → placeholder)
+          - AddPhotoCommand: ICommand
+          - Miejscowosc, ImiéNazwisko, Adres, Telefon: string
+          - Marka, Model, RokProdukcji, VIN, TypNadwozia: string
+          - Kolor, RodzajNaprawy, TerminRealizacji, SzacunkowyKoszt: string
+          - SaveCommand: ICommand (labeled "Zapisz" or "Zapisz zmiany" by parent)
+    -->
+
+    <Border Background="{StaticResource CardBackgroundBrush}"
+            BorderBrush="{StaticResource CardBorderBrush}"
+            BorderThickness="1"
+            CornerRadius="10"
+            Padding="28">
+
+        <Grid ColumnDefinitions="Auto,*,Auto,*" RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto">
+
+            <!-- ==========================================
+                 TOP ROW: Photo + Client info side by side
+            ========================================== -->
+
+            <!-- Photo area (spans 2 rows for visual weight) -->
+            <StackPanel Grid.Row="0" Grid.Column="0" Grid.RowSpan="3"
+                        VerticalAlignment="Top"
+                        Spacing="10"
+                        Margin="0,0,28,0">
+
+                <!-- Photo placeholder / preview -->
+                <Border Classes="ImagePlaceholder"
+                        Width="160" Height="130"
+                        CornerRadius="8"
+                        ClipToBounds="True">
+                    <!-- Placeholder mountain graphic -->
+                    <Canvas Width="160" Height="130">
+                        <Rectangle Canvas.Left="0" Canvas.Top="65"
+                                   Width="160" Height="65"
+                                   Fill="#A8CEE8"/>
+                        <Polygon Points="20,65 80,20 140,65"
+                                 Fill="#5B9AC1"/>
+                        <Polygon Points="70,65 110,36 150,65"
+                                 Fill="#3A7FAA"/>
+                        <Ellipse Canvas.Left="110" Canvas.Top="14"
+                                 Width="22" Height="22"
+                                 Fill="#E8D44D"/>
+                    </Canvas>
+                </Border>
+
+                <!-- Add photo button -->
+                <Button Theme="{StaticResource OutlineButtonStyle}"
+                        Content="Dodaj zdjęcie"
+                        Command="{Binding AddPhotoCommand}"
+                        HorizontalAlignment="Center"/>
+
+            </StackPanel>
+
+            <!-- Client fields (right side of top section) -->
+            <!-- Miejscowość -->
+            <TextBlock Grid.Row="0" Grid.Column="2"
+                       Text="Miejscowość"
+                       FontSize="13"
+                       Foreground="{StaticResource TextSecondaryBrush}"
+                       VerticalAlignment="Center"
+                       HorizontalAlignment="Right"
+                       Margin="0,8,12,8"/>
+            <TextBox Grid.Row="0" Grid.Column="3"
+                     Theme="{StaticResource FormInputStyle}"
+                     Text="{Binding Miejscowosc}"
+                     Margin="0,6"/>
+
+            <!-- Imię i nazwisko -->
+            <TextBlock Grid.Row="1" Grid.Column="2"
+                       Text="Imię i nazwisko"
+                       FontSize="13"
+                       Foreground="{StaticResource TextSecondaryBrush}"
+                       VerticalAlignment="Center"
+                       HorizontalAlignment="Right"
+                       Margin="0,8,12,8"/>
+            <TextBox Grid.Row="1" Grid.Column="3"
+                     Theme="{StaticResource FormInputStyle}"
+                     Text="{Binding ImieNazwisko}"
+                     Margin="0,6"/>
+
+            <!-- Adres -->
+            <TextBlock Grid.Row="2" Grid.Column="2"
+                       Text="Adres"
+                       FontSize="13"
+                       Foreground="{StaticResource TextSecondaryBrush}"
+                       VerticalAlignment="Center"
+                       HorizontalAlignment="Right"
+                       Margin="0,8,12,8"/>
+            <TextBox Grid.Row="2" Grid.Column="3"
+                     Theme="{StaticResource FormInputStyle}"
+                     Text="{Binding Adres}"
+                     Margin="0,6"/>
+
+            <!-- Telefon -->
+            <TextBlock Grid.Row="3" Grid.Column="2"
+                       Text="Telefon"
+                       FontSize="13"
+                       Foreground="{StaticResource TextSecondaryBrush}"
+                       VerticalAlignment="Center"
+                       HorizontalAlignment="Right"
+                       Margin="0,8,12,8"/>
+            <TextBox Grid.Row="3" Grid.Column="3"
+                     Theme="{StaticResource FormInputStyle}"
+                     Text="{Binding Telefon}"
+                     Margin="0,6"/>
+
+            <!-- ==========================================
+                 CAR FIELDS - 2 columns layout
+            ========================================== -->
+
+            <!-- Marka -->
+            <StackPanel Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2"
+                        Margin="0,12,16,0" Spacing="4">
+                <TextBlock Text="Marka" FontSize="13"
+                           Foreground="{StaticResource TextSecondaryBrush}"/>
+                <TextBox Theme="{StaticResource FormInputStyle}"
+                         Text="{Binding Marka}"/>
+            </StackPanel>
+
+            <!-- Kolor -->
+            <StackPanel Grid.Row="4" Grid.Column="2" Grid.ColumnSpan="2"
+                        Margin="0,12,0,0" Spacing="4">
+                <TextBlock Text="Kolor" FontSize="13"
+                           Foreground="{StaticResource TextSecondaryBrush}"/>
+                <TextBox Theme="{StaticResource FormInputStyle}"
+                         Text="{Binding Kolor}"/>
+            </StackPanel>
+
+            <!-- Model -->
+            <StackPanel Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2"
+                        Margin="0,10,16,0" Spacing="4">
+                <TextBlock Text="Model" FontSize="13"
+                           Foreground="{StaticResource TextSecondaryBrush}"/>
+                <TextBox Theme="{StaticResource FormInputStyle}"
+                         Text="{Binding Model}"/>
+            </StackPanel>
+
+            <!-- Rodzaj naprawy -->
+            <StackPanel Grid.Row="5" Grid.Column="2" Grid.ColumnSpan="2"
+                        Margin="0,10,0,0" Spacing="4">
+                <TextBlock Text="Rodzaj naprawy" FontSize="13"
+                           Foreground="{StaticResource TextSecondaryBrush}"/>
+                <TextBox Theme="{StaticResource FormInputStyle}"
+                         Text="{Binding RodzajNaprawy}"/>
+            </StackPanel>
+
+            <!-- Rok produkcji -->
+            <StackPanel Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2"
+                        Margin="0,10,16,0" Spacing="4">
+                <TextBlock Text="Rok produkcji" FontSize="13"
+                           Foreground="{StaticResource TextSecondaryBrush}"/>
+                <TextBox Theme="{StaticResource FormInputStyle}"
+                         Text="{Binding RokProdukcji}"/>
+            </StackPanel>
+
+            <!-- Termin realizacji -->
+            <StackPanel Grid.Row="6" Grid.Column="2" Grid.ColumnSpan="2"
+                        Margin="0,10,0,0" Spacing="4">
+                <TextBlock Text="Termin realizacji" FontSize="13"
+                           Foreground="{StaticResource TextSecondaryBrush}"/>
+                <TextBox Theme="{StaticResource FormInputStyle}"
+                         Text="{Binding TerminRealizacji}"/>
+            </StackPanel>
+
+            <!-- VIN (left col, no pair on right for last row) -->
+            <StackPanel Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="2"
+                        Margin="0,10,16,0" Spacing="4">
+                <TextBlock Text="VIN" FontSize="13"
+                           Foreground="{StaticResource TextSecondaryBrush}"/>
+                <TextBox Theme="{StaticResource FormInputStyle}"
+                         Text="{Binding VIN}"/>
+            </StackPanel>
+
+            <!-- Szacunkowy koszt -->
+            <StackPanel Grid.Row="7" Grid.Column="2" Grid.ColumnSpan="2"
+                        Margin="0,10,0,0" Spacing="4">
+                <TextBlock Text="Szacunkowy koszt" FontSize="13"
+                           Foreground="{StaticResource TextSecondaryBrush}"/>
+                <TextBox Theme="{StaticResource FormInputStyle}"
+                         Text="{Binding SzacunkowyKoszt}"/>
+            </StackPanel>
+
+        </Grid>
+    </Border>
+
+</UserControl>

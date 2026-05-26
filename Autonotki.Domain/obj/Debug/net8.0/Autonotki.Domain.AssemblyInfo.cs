@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Autonotki.Domain")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+7f0bf57c2d0f3f56a43a43b356b24f81a8cba63b")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+27513ab9350f8be64258e14d1053a587e696d839")]
 [assembly: System.Reflection.AssemblyProductAttribute("Autonotki.Domain")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Autonotki.Domain")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "4bngzyF1k+k=",
+  "dgSpecHash": "RYA8gOLfE2g=",
   "success": true,
   "projectFilePath": "/home/dragonline/Dev/Autonotkiv2/Autonotki.Api/Autonotki.Api.csproj",
   "expectedPackageFiles": [
@@ -17,7 +17,6 @@
     "/home/dragonline/.nuget/packages/microsoft.entityframeworkcore.analyzers/8.0.11/microsoft.entityframeworkcore.analyzers.8.0.11.nupkg.sha512",
     "/home/dragonline/.nuget/packages/microsoft.entityframeworkcore.design/8.0.11/microsoft.entityframeworkcore.design.8.0.11.nupkg.sha512",
     "/home/dragonline/.nuget/packages/microsoft.entityframeworkcore.relational/8.0.11/microsoft.entityframeworkcore.relational.8.0.11.nupkg.sha512",
-    "/home/dragonline/.nuget/packages/microsoft.entityframeworkcore.tools/8.0.11/microsoft.entityframeworkcore.tools.8.0.11.nupkg.sha512",
     "/home/dragonline/.nuget/packages/microsoft.extensions.apidescription.server/6.0.5/microsoft.extensions.apidescription.server.6.0.5.nupkg.sha512",
     "/home/dragonline/.nuget/packages/microsoft.extensions.caching.abstractions/8.0.0/microsoft.extensions.caching.abstractions.8.0.0.nupkg.sha512",
     "/home/dragonline/.nuget/packages/microsoft.extensions.caching.memory/8.0.1/microsoft.extensions.caching.memory.8.0.1.nupkg.sha512",

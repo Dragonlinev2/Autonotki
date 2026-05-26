@@ -1,0 +1,141 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             x:Class="Autonotki.Client.Controls.MiniCalendar">
+
+    <!--
+        ViewModel: MiniCalendarViewModel
+          - MonthName: string ("MAJ")
+          - Days: ObservableCollection<CalendarDayViewModel>
+            each: { DayNumber, HasPendingOrders (orange dot), HasDoneOrders (green dot),
+                    IsToday, IsWeekend, IsOtherMonth }
+          - PreviousMonthCommand, NextMonthCommand
+    -->
+
+    <Border Background="{StaticResource CardBackgroundBrush}"
+            BorderBrush="{StaticResource CardBorderBrush}"
+            BorderThickness="1"
+            CornerRadius="12"
+            Padding="20">
+
+        <StackPanel>
+
+            <!-- Month header (no arrows on mini version) -->
+            <TextBlock Text="{Binding MonthName}"
+                       FontSize="16"
+                       FontWeight="Bold"
+                       HorizontalAlignment="Center"
+                       Margin="0,0,0,14"/>
+
+            <!-- Day-of-week headers -->
+            <Grid ColumnDefinitions="*,*,*,*,*,*,*"
+                  Margin="0,0,0,8">
+                <TextBlock Grid.Column="0" Text="Poniedziałek" FontSize="11"
+                           Foreground="{StaticResource TextSecondaryBrush}"
+                           HorizontalAlignment="Center" TextWrapping="Wrap"
+                           TextAlignment="Center"/>
+                <TextBlock Grid.Column="1" Text="Wtorek" FontSize="11"
+                           Foreground="{StaticResource TextSecondaryBrush}"
+                           HorizontalAlignment="Center" TextAlignment="Center"/>
+                <TextBlock Grid.Column="2" Text="Środa" FontSize="11"
+                           Foreground="{StaticResource TextSecondaryBrush}"
+                           HorizontalAlignment="Center" TextAlignment="Center"/>
+                <TextBlock Grid.Column="3" Text="Czwartek" FontSize="11"
+                           Foreground="{StaticResource TextSecondaryBrush}"
+                           HorizontalAlignment="Center" TextAlignment="Center"/>
+                <TextBlock Grid.Column="4" Text="Piątek" FontSize="11"
+                           Foreground="{StaticResource TextSecondaryBrush}"
+                           HorizontalAlignment="Center" TextAlignment="Center"/>
+                <TextBlock Grid.Column="5" Text="Sobota" FontSize="11"
+                           Foreground="{StaticResource WeekendTextBrush}"
+                           HorizontalAlignment="Center" TextAlignment="Center"/>
+                <TextBlock Grid.Column="6" Text="Niedziela" FontSize="11"
+                           Foreground="{StaticResource WeekendTextBrush}"
+                           HorizontalAlignment="Center" TextAlignment="Center"/>
+            </Grid>
+
+            <!-- Calendar days using ItemsControl with UniformGrid -->
+            <ItemsControl ItemsSource="{Binding Days}">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <UniformGrid Columns="7" Rows="6"/>
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <!-- Each calendar day cell -->
+                        <Button Background="Transparent"
+                                BorderThickness="0"
+                                Padding="0"
+                                HorizontalAlignment="Stretch"
+                                VerticalAlignment="Stretch"
+                                Command="{Binding SelectDayCommand}"
+                                Cursor="Hand">
+                            <StackPanel HorizontalAlignment="Center"
+                                        VerticalAlignment="Center"
+                                        Spacing="2"
+                                        Margin="2">
+
+                                <!-- Day number - Today gets circle background -->
+                                <Border Width="30" Height="30"
+                                        CornerRadius="15"
+                                        HorizontalAlignment="Center">
+                                    <Border.Background>
+                                        <MultiBinding>
+                                            <!-- IsToday → NavyBlue, else Transparent -->
+                                        </MultiBinding>
+                                    </Border.Background>
+                                    <TextBlock Text="{Binding DayNumber}"
+                                               FontSize="13"
+                                               HorizontalAlignment="Center"
+                                               VerticalAlignment="Center">
+                                        <TextBlock.Foreground>
+                                            <MultiBinding>
+                                                <!-- IsToday → White, IsWeekend → WeekendText, else TextPrimary -->
+                                            </MultiBinding>
+                                        </TextBlock.Foreground>
+                                    </TextBlock>
+                                </Border>
+
+                                <!-- Status dots row -->
+                                <StackPanel Orientation="Horizontal"
+                                            HorizontalAlignment="Center"
+                                            Spacing="3">
+                                    <Ellipse Classes="StatusOrange"
+                                             IsVisible="{Binding HasPendingOrders}"
+                                             Width="8" Height="8"/>
+                                    <Ellipse Classes="StatusGreen"
+                                             IsVisible="{Binding HasDoneOrders}"
+                                             Width="8" Height="8"/>
+                                </StackPanel>
+
+                            </StackPanel>
+                        </Button>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+
+            <!-- Legend -->
+            <StackPanel Orientation="Horizontal"
+                        HorizontalAlignment="Center"
+                        Margin="0,16,0,0"
+                        Spacing="24">
+                <StackPanel Orientation="Horizontal" Spacing="6" VerticalAlignment="Center">
+                    <Ellipse Classes="StatusOrange"/>
+                    <TextBlock Text="Do zrobienia"
+                               FontSize="12"
+                               Foreground="{StaticResource TextSecondaryBrush}"
+                               VerticalAlignment="Center"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Spacing="6" VerticalAlignment="Center">
+                    <Ellipse Classes="StatusGreen"/>
+                    <TextBlock Text="Zrobione"
+                               FontSize="12"
+                               Foreground="{StaticResource TextSecondaryBrush}"
+                               VerticalAlignment="Center"/>
+                </StackPanel>
+            </StackPanel>
+
+        </StackPanel>
+    </Border>
+
+</UserControl>

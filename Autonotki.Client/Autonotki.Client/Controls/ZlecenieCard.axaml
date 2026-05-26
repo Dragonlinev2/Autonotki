@@ -1,0 +1,134 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             x:Class="Autonotki.Client.Controls.ZlecenieCard">
+
+    <!--
+        Binds to ZlecenieCardViewModel which exposes:
+          CarName, CarYear, VIN, ServiceType, EstimatedCost,
+          Deadline, ClientName, PhoneNumber,
+          Status (enum: DoZrobienia | WToku | Zrobione),
+          StatusText, IsOrange, IsGreen
+    -->
+
+    <Border Background="{StaticResource CardBackgroundBrush}"
+            BorderBrush="{StaticResource CardBorderBrush}"
+            BorderThickness="1"
+            CornerRadius="10"
+            Margin="0,0,0,14">
+
+        <Grid ColumnDefinitions="*,Auto,Auto" Margin="0">
+
+            <!-- Left section: Image + Car details -->
+            <StackPanel Grid.Column="0"
+                        Orientation="Horizontal"
+                        Spacing="16"
+                        Margin="16,16">
+
+                <!-- Car image placeholder -->
+                <Border Classes="ImagePlaceholder"
+                        Width="80" Height="70">
+                    <Canvas Width="80" Height="70">
+                        <!-- Mountain placeholder SVG-like shapes -->
+                        <Rectangle Canvas.Left="0" Canvas.Top="35"
+                                   Width="80" Height="35"
+                                   Fill="#A8CEE8"/>
+                        <Polygon Points="10,35 40,10 70,35"
+                                 Fill="#5B9AC1"/>
+                        <Polygon Points="35,35 55,18 75,35"
+                                 Fill="#3A7FAA"/>
+                        <Ellipse Canvas.Left="55" Canvas.Top="8"
+                                 Width="12" Height="12"
+                                 Fill="#E8D44D"/>
+                    </Canvas>
+                </Border>
+
+                <!-- Car info text block -->
+                <StackPanel VerticalAlignment="Center" Spacing="3">
+                    <TextBlock Text="{Binding CarName}"
+                               FontSize="17"
+                               FontWeight="Bold"
+                               Foreground="{StaticResource TextPrimaryBrush}"/>
+                    <TextBlock FontSize="13"
+                               Foreground="{StaticResource TextSecondaryBrush}">
+                        <Run Text="Rocznik: "/>
+                        <Run Text="{Binding CarYear}"/>
+                    </TextBlock>
+                    <TextBlock FontSize="13"
+                               Foreground="{StaticResource TextSecondaryBrush}">
+                        <Run Text="VIN: "/>
+                        <Run Text="{Binding VIN}"/>
+                    </TextBlock>
+                    <TextBlock FontSize="13"
+                               Foreground="{StaticResource TextSecondaryBrush}">
+                        <Run Text="Rodzaj naprawy: "/>
+                        <Run Text="{Binding ServiceType}"/>
+                    </TextBlock>
+                    <TextBlock FontSize="13"
+                               Foreground="{StaticResource TextSecondaryBrush}">
+                        <Run Text="Szacunkowy koszt: "/>
+                        <Run Text="{Binding EstimatedCost}"/>
+                        <Run Text="zł"/>
+                    </TextBlock>
+
+                    <!-- Status + Szczegóły buttons -->
+                    <StackPanel Orientation="Horizontal"
+                                Spacing="10"
+                                Margin="0,8,0,0">
+
+                        <!-- Status button - dynamically styled via converter/triggers -->
+                        <Button Theme="{StaticResource OrangeButtonStyle}"
+                                Content="{Binding StatusText}"
+                                IsVisible="{Binding IsInProgress}"
+                                Command="{Binding CycleStatusCommand}"/>
+
+                        <Button Theme="{StaticResource GreenButtonStyle}"
+                                Content="Zrobione"
+                                IsVisible="{Binding IsDone}"
+                                Command="{Binding CycleStatusCommand}"/>
+
+                        <Button Theme="{StaticResource OutlineButtonStyle}"
+                                Content="Do zrobienia"
+                                IsVisible="{Binding IsTodo}"
+                                Command="{Binding CycleStatusCommand}"/>
+
+                        <Button Theme="{StaticResource OutlineButtonStyle}"
+                                Content="Szczegóły"
+                                Command="{Binding OpenDetailsCommand}"/>
+
+                    </StackPanel>
+                </StackPanel>
+
+            </StackPanel>
+
+            <!-- Vertical separator -->
+            <Border Grid.Column="1"
+                    Classes="VerticalSeparator"
+                    Margin="0,16"/>
+
+            <!-- Right section: Deadline + Client -->
+            <StackPanel Grid.Column="2"
+                        VerticalAlignment="Center"
+                        Margin="16,16"
+                        MinWidth="160"
+                        Spacing="5">
+                <TextBlock FontSize="14"
+                           Foreground="{StaticResource TextPrimaryBrush}">
+                    <Run Text="Termin: "/>
+                    <Run Text="{Binding DeadlineDisplay}" FontWeight="SemiBold"/>
+                </TextBlock>
+                <TextBlock FontSize="14"
+                           Foreground="{StaticResource TextPrimaryBrush}">
+                    <Run Text="Klient: "/>
+                    <Run Text="{Binding ClientName}" FontWeight="SemiBold"/>
+                </TextBlock>
+                <TextBlock FontSize="14"
+                           Foreground="{StaticResource TextPrimaryBrush}">
+                    <Run Text="Telefon: "/>
+                    <Run Text="{Binding PhoneNumber}"/>
+                </TextBlock>
+            </StackPanel>
+
+        </Grid>
+    </Border>
+
+</UserControl>

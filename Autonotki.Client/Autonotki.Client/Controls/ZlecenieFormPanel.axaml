@@ -1,0 +1,131 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:controls="clr-namespace:Autonotki.Client.Controls"
+             x:Class="Autonotki.Client.Controls.ZlecenieFormPanel">
+
+    <!--
+        Shared form body for both DodajZlecenieView and EdytujZlecenieView.
+        ViewModel: ZlecenieFormViewModel
+          - PhotoSource: IBitmap? (null → placeholder)
+          - AddPhotoCommand: ICommand
+          - Miejscowosc, ImiéNazwisko, Adres, Telefon: string
+          - Marka, Model, RokProdukcji, VIN, TypNadwozia: string
+          - Kolor, RodzajNaprawy, TerminRealizacji, SzacunkowyKoszt: string
+          - SaveCommand: ICommand (labeled "Zapisz" or "Zapisz zmiany" by parent)
+    -->
+
+    <Border Background="{StaticResource CardBackgroundBrush}"
+            BorderBrush="{StaticResource CardBorderBrush}"
+            BorderThickness="1"
+            CornerRadius="10"
+            Padding="28">
+
+        <Grid ColumnDefinitions="Auto,*" ColumnSpacing="24">
+
+            <!-- LEFT: Photo section -->
+            <StackPanel Grid.Column="0" VerticalAlignment="Top" Spacing="10">
+                <Border Classes="ImagePlaceholder"
+                        Width="160" Height="130"
+                        CornerRadius="8"
+                        ClipToBounds="True">
+                    <Canvas Width="160" Height="130">
+                        <Rectangle Canvas.Left="0" Canvas.Top="65"
+                                   Width="160" Height="65"
+                                   Fill="#A8CEE8"/>
+                        <Polygon Points="20,65 80,20 140,65"
+                                 Fill="#5B9AC1"/>
+                        <Polygon Points="70,65 110,36 150,65"
+                                 Fill="#3A7FAA"/>
+                        <Ellipse Canvas.Left="110" Canvas.Top="14"
+                                 Width="22" Height="22"
+                                 Fill="#E8D44D"/>
+                    </Canvas>
+                </Border>
+                <Button Theme="{StaticResource OutlineButtonStyle}"
+                        Content="Dodaj zdjęcie"
+                        Command="{Binding AddPhotoCommand}"
+                        HorizontalAlignment="Center"/>
+            </StackPanel>
+
+            <!-- RIGHT: Form fields -->
+            <StackPanel Grid.Column="1" Spacing="14">
+
+                <!-- Client info section -->
+                <Grid ColumnDefinitions="120,*" RowDefinitions="40,40,40,40" RowSpacing="12">
+                    <TextBlock Grid.Row="0" Grid.Column="0" Text="Miejscowość"
+                               FontSize="13" Foreground="{StaticResource TextSecondaryBrush}"
+                               VerticalAlignment="Center" Margin="0,0,12,0"/>
+                    <TextBox Grid.Row="0" Grid.Column="1" Theme="{StaticResource FormInputStyle}"
+                             Text="{Binding Miejscowosc}" Height="34" MinHeight="34" MaxHeight="34"/>
+
+                    <TextBlock Grid.Row="1" Grid.Column="0" Text="Imię i nazwisko"
+                               FontSize="13" Foreground="{StaticResource TextSecondaryBrush}"
+                               VerticalAlignment="Center" Margin="0,0,12,0"/>
+                    <TextBox Grid.Row="1" Grid.Column="1" Theme="{StaticResource FormInputStyle}"
+                             Text="{Binding ImieNazwisko}" Height="34" MinHeight="34" MaxHeight="34"/>
+
+                    <TextBlock Grid.Row="2" Grid.Column="0" Text="Adres"
+                               FontSize="13" Foreground="{StaticResource TextSecondaryBrush}"
+                               VerticalAlignment="Center" Margin="0,0,12,0"/>
+                    <TextBox Grid.Row="2" Grid.Column="1" Theme="{StaticResource FormInputStyle}"
+                             Text="{Binding Adres}" Height="34" MinHeight="34" MaxHeight="34"/>
+
+                    <TextBlock Grid.Row="3" Grid.Column="0" Text="Telefon"
+                               FontSize="13" Foreground="{StaticResource TextSecondaryBrush}"
+                               VerticalAlignment="Center" Margin="0,0,12,0"/>
+                    <TextBox Grid.Row="3" Grid.Column="1" Theme="{StaticResource FormInputStyle}"
+                             Text="{Binding Telefon}" Height="34" MinHeight="34" MaxHeight="34"/>
+                </Grid>
+
+                <!-- Car info section -->
+                <Grid ColumnDefinitions="*,*" RowDefinitions="40,40,40,40" RowSpacing="12" ColumnSpacing="16">
+                    <TextBlock Grid.Row="0" Grid.Column="0" Text="Marka"
+                               FontSize="13" Foreground="{StaticResource TextSecondaryBrush}"/>
+                    <TextBox Grid.Row="1" Grid.Column="0" Theme="{StaticResource FormInputStyle}"
+                             Text="{Binding Marka}" Height="34" MinHeight="34" MaxHeight="34"/>
+
+                    <TextBlock Grid.Row="0" Grid.Column="1" Text="Kolor"
+                               FontSize="13" Foreground="{StaticResource TextSecondaryBrush}"/>
+                    <TextBox Grid.Row="1" Grid.Column="1" Theme="{StaticResource FormInputStyle}"
+                             Text="{Binding Kolor}" Height="34" MinHeight="34" MaxHeight="34"/>
+
+                    <TextBlock Grid.Row="2" Grid.Column="0" Text="Model"
+                               FontSize="13" Foreground="{StaticResource TextSecondaryBrush}"/>
+                    <TextBox Grid.Row="3" Grid.Column="0" Theme="{StaticResource FormInputStyle}"
+                             Text="{Binding Model}" Height="34" MinHeight="34" MaxHeight="34"/>
+
+                    <TextBlock Grid.Row="2" Grid.Column="1" Text="Rodzaj naprawy"
+                               FontSize="13" Foreground="{StaticResource TextSecondaryBrush}"/>
+                    <TextBox Grid.Row="3" Grid.Column="1" Theme="{StaticResource FormInputStyle}"
+                             Text="{Binding RodzajNaprawy}" Height="34" MinHeight="34" MaxHeight="34"/>
+                </Grid>
+
+                <!-- More car info section -->
+                <Grid ColumnDefinitions="*,*" RowDefinitions="40,40,40,40" RowSpacing="12" ColumnSpacing="16">
+                    <TextBlock Grid.Row="0" Grid.Column="0" Text="Rok produkcji"
+                               FontSize="13" Foreground="{StaticResource TextSecondaryBrush}"/>
+                    <TextBox Grid.Row="1" Grid.Column="0" Theme="{StaticResource FormInputStyle}"
+                             Text="{Binding RokProdukcji}" Height="34" MinHeight="34" MaxHeight="34"/>
+
+                    <TextBlock Grid.Row="0" Grid.Column="1" Text="Termin realizacji"
+                               FontSize="13" Foreground="{StaticResource TextSecondaryBrush}"/>
+                    <TextBox Grid.Row="1" Grid.Column="1" Theme="{StaticResource FormInputStyle}"
+                             Text="{Binding TerminRealizacji}" Height="34" MinHeight="34" MaxHeight="34"/>
+
+                    <TextBlock Grid.Row="2" Grid.Column="0" Text="VIN"
+                               FontSize="13" Foreground="{StaticResource TextSecondaryBrush}"/>
+                    <TextBox Grid.Row="3" Grid.Column="0" Theme="{StaticResource FormInputStyle}"
+                             Text="{Binding VIN}" Height="34" MinHeight="34" MaxHeight="34"/>
+
+                    <TextBlock Grid.Row="2" Grid.Column="1" Text="Szacunkowy koszt"
+                               FontSize="13" Foreground="{StaticResource TextSecondaryBrush}"/>
+                    <TextBox Grid.Row="3" Grid.Column="1" Theme="{StaticResource FormInputStyle}"
+                             Text="{Binding SzacunkowyKoszt}" Height="34" MinHeight="34" MaxHeight="34"/>
+                </Grid>
+
+            </StackPanel>
+
+        </Grid>
+    </Border>
+
+</UserControl>

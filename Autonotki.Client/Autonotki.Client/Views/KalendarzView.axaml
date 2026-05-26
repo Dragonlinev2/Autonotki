@@ -1,0 +1,288 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:controls="clr-namespace:Autonotki.Client.Controls"
+             x:Class="Autonotki.Client.Views.KalendarzView"
+             Background="{StaticResource PageBackgroundBrush}">
+
+    <!--
+        ViewModel: KalendarzViewModel
+          - MonthName: string ("MAJ")
+          - Days: ObservableCollection<CalendarDayViewModel>
+          - PreviousMonthCommand, NextMonthCommand
+          - SelectedDayOrders: ObservableCollection<ZlecenieKalendarzCardViewModel>
+            each: { CarName, CarYear, VIN, Description, Status, Deadline, ClientName }
+    -->
+
+    <Grid RowDefinitions="Auto,*">
+
+        <!-- Top Navigation Bar -->
+        <controls:TopNavBar Grid.Row="0"
+                            DataContext="{Binding NavVM}"/>
+
+        <!-- Page Content -->
+        <ScrollViewer Grid.Row="1" Padding="40,32">
+
+            <StackPanel MaxWidth="900" HorizontalAlignment="Left" Spacing="32">
+
+                <!-- Page Title -->
+                <TextBlock Text="KALENDARZ"
+                           FontSize="26"
+                           FontWeight="Bold"
+                           Foreground="{StaticResource TextPrimaryBrush}"
+                           LetterSpacing="1"/>
+
+                <!-- Full Calendar Card -->
+                <Border Background="{StaticResource CardBackgroundBrush}"
+                        BorderBrush="{StaticResource CardBorderBrush}"
+                        BorderThickness="1"
+                        CornerRadius="12"
+                        Padding="28">
+
+                    <StackPanel>
+
+                        <!-- Month navigation header -->
+                        <Grid ColumnDefinitions="Auto,*,Auto"
+                              Margin="0,0,0,20">
+
+                            <Button Grid.Column="0"
+                                    Theme="{StaticResource CalendarArrowStyle}"
+                                    Content="&#x3C;"
+                                    Command="{Binding PreviousMonthCommand}"/>
+
+                            <TextBlock Grid.Column="1"
+                                       Text="{Binding MonthName}"
+                                       FontSize="20"
+                                       FontWeight="Bold"
+                                       HorizontalAlignment="Center"
+                                       VerticalAlignment="Center"/>
+
+                            <Button Grid.Column="2"
+                                    Theme="{StaticResource CalendarArrowStyle}"
+                                    Content="&#x3E;"
+                                    Command="{Binding NextMonthCommand}"/>
+                        </Grid>
+
+                        <!-- Day-of-week header row -->
+                        <Grid ColumnDefinitions="*,*,*,*,*,*,*"
+                              Margin="0,0,0,12">
+                            <TextBlock Grid.Column="0" Text="Poniedziałek"
+                                       FontSize="12" FontWeight="SemiBold"
+                                       Foreground="{StaticResource TextSecondaryBrush}"
+                                       HorizontalAlignment="Center" TextAlignment="Center"
+                                       TextWrapping="Wrap"/>
+                            <TextBlock Grid.Column="1" Text="Wtorek"
+                                       FontSize="12" FontWeight="SemiBold"
+                                       Foreground="{StaticResource TextSecondaryBrush}"
+                                       HorizontalAlignment="Center" TextAlignment="Center"/>
+                            <TextBlock Grid.Column="2" Text="Środa"
+                                       FontSize="12" FontWeight="SemiBold"
+                                       Foreground="{StaticResource TextSecondaryBrush}"
+                                       HorizontalAlignment="Center" TextAlignment="Center"/>
+                            <TextBlock Grid.Column="3" Text="Czwartek"
+                                       FontSize="12" FontWeight="SemiBold"
+                                       Foreground="{StaticResource TextSecondaryBrush}"
+                                       HorizontalAlignment="Center" TextAlignment="Center"/>
+                            <TextBlock Grid.Column="4" Text="Piątek"
+                                       FontSize="12" FontWeight="SemiBold"
+                                       Foreground="{StaticResource TextSecondaryBrush}"
+                                       HorizontalAlignment="Center" TextAlignment="Center"/>
+                            <TextBlock Grid.Column="5" Text="Sobota"
+                                       FontSize="12" FontWeight="SemiBold"
+                                       Foreground="{StaticResource WeekendTextBrush}"
+                                       HorizontalAlignment="Center" TextAlignment="Center"/>
+                            <TextBlock Grid.Column="6" Text="Niedziela"
+                                       FontSize="12" FontWeight="SemiBold"
+                                       Foreground="{StaticResource WeekendTextBrush}"
+                                       HorizontalAlignment="Center" TextAlignment="Center"/>
+                        </Grid>
+
+                        <!-- Calendar grid - 6 rows x 7 cols -->
+                        <ItemsControl ItemsSource="{Binding Days}">
+                            <ItemsControl.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <UniformGrid Columns="7" Rows="6"/>
+                                </ItemsPanelTemplate>
+                            </ItemsControl.ItemsPanel>
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <Button Background="{StaticResource CardBackgroundBrush}"
+                                            BorderBrush="{StaticResource CardBorderBrush}"
+                                            BorderThickness="1"
+                                            Padding="0"
+                                            Height="56"
+                                            HorizontalAlignment="Stretch"
+                                            Command="{Binding SelectDayCommand}"
+                                            Cursor="Hand">
+                                        <StackPanel HorizontalAlignment="Center"
+                                                    VerticalAlignment="Center"
+                                                    Spacing="4">
+
+                                            <!-- Day number bubble -->
+                                            <Border Width="34" Height="34"
+                                                    CornerRadius="17"
+                                                    Background="{StaticResource PageBackgroundBrush}"
+                                                    BorderBrush="{StaticResource CardBorderBrush}"
+                                                    BorderThickness="1"
+                                                    HorizontalAlignment="Center">
+                                                <TextBlock Text="{Binding DayNumber}"
+                                                           FontSize="14"
+                                                           HorizontalAlignment="Center"
+                                                           VerticalAlignment="Center"/>
+                                            </Border>
+
+                                            <!-- Status dots -->
+                                            <StackPanel Orientation="Horizontal"
+                                                        HorizontalAlignment="Center"
+                                                        Spacing="3">
+                                                <Ellipse Classes="StatusOrange"
+                                                         Width="9" Height="9"
+                                                         IsVisible="{Binding HasPendingOrders}"/>
+                                                <Ellipse Classes="StatusGreen"
+                                                         Width="9" Height="9"
+                                                         IsVisible="{Binding HasDoneOrders}"/>
+                                            </StackPanel>
+
+                                        </StackPanel>
+                                    </Button>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+
+                        <!-- Legend -->
+                        <StackPanel Orientation="Horizontal"
+                                    HorizontalAlignment="Center"
+                                    Margin="0,20,0,0"
+                                    Spacing="28">
+                            <StackPanel Orientation="Horizontal" Spacing="7" VerticalAlignment="Center">
+                                <Ellipse Classes="StatusOrange"/>
+                                <TextBlock Text="Do zrobienia"
+                                           FontSize="13"
+                                           Foreground="{StaticResource TextSecondaryBrush}"
+                                           VerticalAlignment="Center"/>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" Spacing="7" VerticalAlignment="Center">
+                                <Ellipse Classes="StatusGreen"/>
+                                <TextBlock Text="Zrobione"
+                                           FontSize="13"
+                                           Foreground="{StaticResource TextSecondaryBrush}"
+                                           VerticalAlignment="Center"/>
+                            </StackPanel>
+                        </StackPanel>
+
+                    </StackPanel>
+                </Border>
+
+                <!-- Orders section header -->
+                <TextBlock Text="ZLECENIA"
+                           FontSize="20"
+                           FontWeight="Bold"
+                           Foreground="{StaticResource TextPrimaryBrush}"
+                           LetterSpacing="1"/>
+
+                <!-- Orders for the selected day -->
+                <ItemsControl ItemsSource="{Binding SelectedDayOrders}">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <!-- Compact calendar order card -->
+                            <Border Background="{StaticResource CardBackgroundBrush}"
+                                    BorderBrush="{StaticResource CardBorderBrush}"
+                                    BorderThickness="1"
+                                    CornerRadius="10"
+                                    Margin="0,0,0,14">
+
+                                <Grid ColumnDefinitions="Auto,*,Auto,Auto" Margin="0">
+
+                                    <!-- Car photo placeholder -->
+                                    <Border Grid.Column="0"
+                                            Classes="ImagePlaceholder"
+                                            Width="70" Height="60"
+                                            Margin="14,14,0,14"
+                                            CornerRadius="6">
+                                        <Canvas Width="70" Height="60">
+                                            <Rectangle Canvas.Left="0" Canvas.Top="30"
+                                                       Width="70" Height="30"
+                                                       Fill="#A8CEE8"/>
+                                            <Polygon Points="8,30 35,8 62,30"
+                                                     Fill="#5B9AC1"/>
+                                            <Polygon Points="30,30 48,16 66,30"
+                                                     Fill="#3A7FAA"/>
+                                            <Ellipse Canvas.Left="48" Canvas.Top="6"
+                                                     Width="10" Height="10"
+                                                     Fill="#E8D44D"/>
+                                        </Canvas>
+                                    </Border>
+
+                                    <!-- Car info -->
+                                    <StackPanel Grid.Column="1"
+                                                Margin="14,14"
+                                                VerticalAlignment="Center"
+                                                Spacing="3">
+                                        <TextBlock Text="{Binding CarName}"
+                                                   FontSize="16"
+                                                   FontWeight="Bold"/>
+                                        <TextBlock FontSize="12"
+                                                   Foreground="{StaticResource TextSecondaryBrush}">
+                                            <Run Text="Rocznik: "/><Run Text="{Binding CarYear}"/>
+                                        </TextBlock>
+                                        <TextBlock FontSize="12"
+                                                   Foreground="{StaticResource TextSecondaryBrush}">
+                                            <Run Text="VIN: "/><Run Text="{Binding VIN}"/>
+                                        </TextBlock>
+                                        <TextBlock FontSize="12"
+                                                   Foreground="{StaticResource TextSecondaryBrush}">
+                                            <Run Text="Opis: "/><Run Text="{Binding Description}"/>
+                                        </TextBlock>
+
+                                        <!-- Status badge -->
+                                        <StackPanel Orientation="Horizontal" Spacing="8" Margin="0,6,0,0">
+                                            <Button Theme="{StaticResource OrangeButtonStyle}"
+                                                    Content="{Binding StatusText}"
+                                                    IsVisible="{Binding IsInProgress}"
+                                                    Command="{Binding CycleStatusCommand}"/>
+                                            <Button Theme="{StaticResource GreenButtonStyle}"
+                                                    Content="Zrobione"
+                                                    IsVisible="{Binding IsDone}"
+                                                    Command="{Binding CycleStatusCommand}"/>
+                                            <Button Theme="{StaticResource OutlineButtonStyle}"
+                                                    Content="Do zrobienia"
+                                                    IsVisible="{Binding IsTodo}"
+                                                    Command="{Binding CycleStatusCommand}"/>
+                                            <Button Theme="{StaticResource OutlineButtonStyle}"
+                                                    Content="Szczegóły"
+                                                    Command="{Binding OpenDetailsCommand}"/>
+                                        </StackPanel>
+                                    </StackPanel>
+
+                                    <!-- Vertical separator -->
+                                    <Border Grid.Column="2" Classes="VerticalSeparator" Margin="0,14"/>
+
+                                    <!-- Deadline + client -->
+                                    <StackPanel Grid.Column="3"
+                                                Margin="16,14"
+                                                VerticalAlignment="Center"
+                                                Spacing="4"
+                                                MinWidth="140">
+                                        <TextBlock FontSize="13"
+                                                   Foreground="{StaticResource TextPrimaryBrush}">
+                                            <Run Text="Termin realizacji: "/>
+                                            <Run Text="{Binding Deadline}" FontWeight="SemiBold"/>
+                                        </TextBlock>
+                                        <TextBlock FontSize="13"
+                                                   Foreground="{StaticResource TextPrimaryBrush}">
+                                            <Run Text="Klient: "/>
+                                            <Run Text="{Binding ClientName}" FontWeight="SemiBold"/>
+                                        </TextBlock>
+                                    </StackPanel>
+
+                                </Grid>
+                            </Border>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+
+            </StackPanel>
+        </ScrollViewer>
+
+    </Grid>
+
+</UserControl>

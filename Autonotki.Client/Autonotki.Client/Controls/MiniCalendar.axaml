@@ -29,26 +29,26 @@
             <!-- Day-of-week headers -->
             <Grid ColumnDefinitions="*,*,*,*,*,*,*"
                   Margin="0,0,0,8">
-                <TextBlock Grid.Column="0" Text="Poniedziałek" FontSize="11"
+                <TextBlock Grid.Column="0" Text="Pon" FontSize="11"
                            Foreground="{StaticResource TextSecondaryBrush}"
                            HorizontalAlignment="Center" TextWrapping="Wrap"
                            TextAlignment="Center"/>
-                <TextBlock Grid.Column="1" Text="Wtorek" FontSize="11"
+                <TextBlock Grid.Column="1" Text="Wt" FontSize="11"
                            Foreground="{StaticResource TextSecondaryBrush}"
                            HorizontalAlignment="Center" TextAlignment="Center"/>
-                <TextBlock Grid.Column="2" Text="Środa" FontSize="11"
+                <TextBlock Grid.Column="2" Text="Śr" FontSize="11"
                            Foreground="{StaticResource TextSecondaryBrush}"
                            HorizontalAlignment="Center" TextAlignment="Center"/>
-                <TextBlock Grid.Column="3" Text="Czwartek" FontSize="11"
+                <TextBlock Grid.Column="3" Text="Czw" FontSize="11"
                            Foreground="{StaticResource TextSecondaryBrush}"
                            HorizontalAlignment="Center" TextAlignment="Center"/>
-                <TextBlock Grid.Column="4" Text="Piątek" FontSize="11"
+                <TextBlock Grid.Column="4" Text="Pt" FontSize="11"
                            Foreground="{StaticResource TextSecondaryBrush}"
                            HorizontalAlignment="Center" TextAlignment="Center"/>
-                <TextBlock Grid.Column="5" Text="Sobota" FontSize="11"
+                <TextBlock Grid.Column="5" Text="Sob" FontSize="11"
                            Foreground="{StaticResource WeekendTextBrush}"
                            HorizontalAlignment="Center" TextAlignment="Center"/>
-                <TextBlock Grid.Column="6" Text="Niedziela" FontSize="11"
+                <TextBlock Grid.Column="6" Text="Niedz" FontSize="11"
                            Foreground="{StaticResource WeekendTextBrush}"
                            HorizontalAlignment="Center" TextAlignment="Center"/>
             </Grid>

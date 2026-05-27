@@ -3,6 +3,19 @@
              xmlns:controls="clr-namespace:Autonotki.Client.Controls"
              x:Class="Autonotki.Client.Controls.ZlecenieFormPanel">
 
+    <UserControl.Styles>
+        <Style Selector="TextBox">
+            <Setter Property="Background" Value="{StaticResource InputBackgroundBrush}"/>
+            <Setter Property="BorderBrush" Value="{StaticResource InputBorderBrush}"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="CornerRadius" Value="4"/>
+            <Setter Property="Padding" Value="10,7"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="Foreground" Value="{StaticResource TextPrimaryBrush}"/>
+            <Setter Property="MinHeight" Value="34"/>
+        </Style>
+    </UserControl.Styles>
+
     <!--
         Shared form body for both DodajZlecenieView and EdytujZlecenieView.
         ViewModel: ZlecenieFormViewModel
@@ -18,7 +31,9 @@
             BorderBrush="{StaticResource CardBorderBrush}"
             BorderThickness="1"
             CornerRadius="10"
-            Padding="28">
+            Padding="28"
+            Width="980"
+            HorizontalAlignment="Left">
 
         <Grid ColumnDefinitions="Auto,*" ColumnSpacing="24">
 
@@ -51,75 +66,83 @@
             <StackPanel Grid.Column="1" Spacing="14">
 
                 <!-- Client info section -->
-                <Grid ColumnDefinitions="120,*" RowDefinitions="40,40,40,40" RowSpacing="12">
+                <Grid ColumnDefinitions="140,*" RowDefinitions="40,40,40,40" RowSpacing="12">
                     <TextBlock Grid.Row="0" Grid.Column="0" Text="Miejscowość"
                                FontSize="13" Foreground="{StaticResource TextSecondaryBrush}"
                                VerticalAlignment="Center" Margin="0,0,12,0"/>
-                    <TextBox Grid.Row="0" Grid.Column="1" Theme="{StaticResource FormInputStyle}"
+                    <TextBox Grid.Row="0" Grid.Column="1"
                              Text="{Binding Miejscowosc}" Height="34" MinHeight="34" MaxHeight="34"/>
 
                     <TextBlock Grid.Row="1" Grid.Column="0" Text="Imię i nazwisko"
                                FontSize="13" Foreground="{StaticResource TextSecondaryBrush}"
                                VerticalAlignment="Center" Margin="0,0,12,0"/>
-                    <TextBox Grid.Row="1" Grid.Column="1" Theme="{StaticResource FormInputStyle}"
+                    <TextBox Grid.Row="1" Grid.Column="1"
                              Text="{Binding ImieNazwisko}" Height="34" MinHeight="34" MaxHeight="34"/>
 
                     <TextBlock Grid.Row="2" Grid.Column="0" Text="Adres"
                                FontSize="13" Foreground="{StaticResource TextSecondaryBrush}"
                                VerticalAlignment="Center" Margin="0,0,12,0"/>
-                    <TextBox Grid.Row="2" Grid.Column="1" Theme="{StaticResource FormInputStyle}"
+                    <TextBox Grid.Row="2" Grid.Column="1"
                              Text="{Binding Adres}" Height="34" MinHeight="34" MaxHeight="34"/>
 
                     <TextBlock Grid.Row="3" Grid.Column="0" Text="Telefon"
                                FontSize="13" Foreground="{StaticResource TextSecondaryBrush}"
                                VerticalAlignment="Center" Margin="0,0,12,0"/>
-                    <TextBox Grid.Row="3" Grid.Column="1" Theme="{StaticResource FormInputStyle}"
+                    <TextBox Grid.Row="3" Grid.Column="1"
                              Text="{Binding Telefon}" Height="34" MinHeight="34" MaxHeight="34"/>
                 </Grid>
 
                 <!-- Car info section -->
-                <Grid ColumnDefinitions="*,*" RowDefinitions="40,40,40,40" RowSpacing="12" ColumnSpacing="16">
+                <Grid ColumnDefinitions="140,*,140,*" RowDefinitions="40,40" RowSpacing="12" ColumnSpacing="16">
                     <TextBlock Grid.Row="0" Grid.Column="0" Text="Marka"
-                               FontSize="13" Foreground="{StaticResource TextSecondaryBrush}"/>
-                    <TextBox Grid.Row="1" Grid.Column="0" Theme="{StaticResource FormInputStyle}"
+                               FontSize="13" Foreground="{StaticResource TextSecondaryBrush}"
+                               VerticalAlignment="Center"/>
+                    <TextBox Grid.Row="0" Grid.Column="1"
                              Text="{Binding Marka}" Height="34" MinHeight="34" MaxHeight="34"/>
 
-                    <TextBlock Grid.Row="0" Grid.Column="1" Text="Kolor"
-                               FontSize="13" Foreground="{StaticResource TextSecondaryBrush}"/>
-                    <TextBox Grid.Row="1" Grid.Column="1" Theme="{StaticResource FormInputStyle}"
+                    <TextBlock Grid.Row="0" Grid.Column="2" Text="Kolor"
+                               FontSize="13" Foreground="{StaticResource TextSecondaryBrush}"
+                               VerticalAlignment="Center"/>
+                    <TextBox Grid.Row="0" Grid.Column="3"
                              Text="{Binding Kolor}" Height="34" MinHeight="34" MaxHeight="34"/>
 
-                    <TextBlock Grid.Row="2" Grid.Column="0" Text="Model"
-                               FontSize="13" Foreground="{StaticResource TextSecondaryBrush}"/>
-                    <TextBox Grid.Row="3" Grid.Column="0" Theme="{StaticResource FormInputStyle}"
+                    <TextBlock Grid.Row="1" Grid.Column="0" Text="Model"
+                               FontSize="13" Foreground="{StaticResource TextSecondaryBrush}"
+                               VerticalAlignment="Center"/>
+                    <TextBox Grid.Row="1" Grid.Column="1"
                              Text="{Binding Model}" Height="34" MinHeight="34" MaxHeight="34"/>
 
-                    <TextBlock Grid.Row="2" Grid.Column="1" Text="Rodzaj naprawy"
-                               FontSize="13" Foreground="{StaticResource TextSecondaryBrush}"/>
-                    <TextBox Grid.Row="3" Grid.Column="1" Theme="{StaticResource FormInputStyle}"
+                    <TextBlock Grid.Row="1" Grid.Column="2" Text="Rodzaj naprawy"
+                               FontSize="13" Foreground="{StaticResource TextSecondaryBrush}"
+                               VerticalAlignment="Center"/>
+                    <TextBox Grid.Row="1" Grid.Column="3"
                              Text="{Binding RodzajNaprawy}" Height="34" MinHeight="34" MaxHeight="34"/>
                 </Grid>
 
                 <!-- More car info section -->
-                <Grid ColumnDefinitions="*,*" RowDefinitions="40,40,40,40" RowSpacing="12" ColumnSpacing="16">
+                <Grid ColumnDefinitions="140,*,140,*" RowDefinitions="40,40" RowSpacing="12" ColumnSpacing="16">
                     <TextBlock Grid.Row="0" Grid.Column="0" Text="Rok produkcji"
-                               FontSize="13" Foreground="{StaticResource TextSecondaryBrush}"/>
-                    <TextBox Grid.Row="1" Grid.Column="0" Theme="{StaticResource FormInputStyle}"
+                               FontSize="13" Foreground="{StaticResource TextSecondaryBrush}"
+                               VerticalAlignment="Center"/>
+                    <TextBox Grid.Row="0" Grid.Column="1"
                              Text="{Binding RokProdukcji}" Height="34" MinHeight="34" MaxHeight="34"/>
 
-                    <TextBlock Grid.Row="0" Grid.Column="1" Text="Termin realizacji"
-                               FontSize="13" Foreground="{StaticResource TextSecondaryBrush}"/>
-                    <TextBox Grid.Row="1" Grid.Column="1" Theme="{StaticResource FormInputStyle}"
+                    <TextBlock Grid.Row="0" Grid.Column="2" Text="Termin realizacji"
+                               FontSize="13" Foreground="{StaticResource TextSecondaryBrush}"
+                               VerticalAlignment="Center"/>
+                    <TextBox Grid.Row="0" Grid.Column="3"
                              Text="{Binding TerminRealizacji}" Height="34" MinHeight="34" MaxHeight="34"/>
 
-                    <TextBlock Grid.Row="2" Grid.Column="0" Text="VIN"
-                               FontSize="13" Foreground="{StaticResource TextSecondaryBrush}"/>
-                    <TextBox Grid.Row="3" Grid.Column="0" Theme="{StaticResource FormInputStyle}"
+                    <TextBlock Grid.Row="1" Grid.Column="0" Text="VIN"
+                               FontSize="13" Foreground="{StaticResource TextSecondaryBrush}"
+                               VerticalAlignment="Center"/>
+                    <TextBox Grid.Row="1" Grid.Column="1"
                              Text="{Binding VIN}" Height="34" MinHeight="34" MaxHeight="34"/>
 
-                    <TextBlock Grid.Row="2" Grid.Column="1" Text="Szacunkowy koszt"
-                               FontSize="13" Foreground="{StaticResource TextSecondaryBrush}"/>
-                    <TextBox Grid.Row="3" Grid.Column="1" Theme="{StaticResource FormInputStyle}"
+                    <TextBlock Grid.Row="1" Grid.Column="2" Text="Szacunkowy koszt"
+                               FontSize="13" Foreground="{StaticResource TextSecondaryBrush}"
+                               VerticalAlignment="Center"/>
+                    <TextBox Grid.Row="1" Grid.Column="3"
                              Text="{Binding SzacunkowyKoszt}" Height="34" MinHeight="34" MaxHeight="34"/>
                 </Grid>
 

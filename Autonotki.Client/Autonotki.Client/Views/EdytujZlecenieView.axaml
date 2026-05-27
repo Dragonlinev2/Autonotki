@@ -40,7 +40,7 @@
                         <TextBlock Text="Typ nadwozia"
                                    FontSize="13"
                                    Foreground="{StaticResource TextSecondaryBrush}"/>
-                        <TextBox Theme="{StaticResource FormInputStyle}"
+                        <TextBox
                                  Text="{Binding FormVM.TypNadwozia}"
                                  Width="200"
                                  HorizontalAlignment="Left"/>

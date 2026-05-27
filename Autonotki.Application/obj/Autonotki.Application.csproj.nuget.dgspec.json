@@ -60,6 +60,11 @@
           },
           "runtimeIdentifierGraphPath": "/nix/store/16341mr27xkzix0a048jwj9lrzq5bk1c-dotnet-sdk-8.0.419/share/dotnet/sdk/8.0.419/PortableRuntimeIdentifierGraph.json"
         }
+      },
+      "runtimes": {
+        "linux-x64": {
+          "#import": []
+        }
       }
     }
   }

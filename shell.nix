@@ -7,6 +7,7 @@ pkgs.mkShell {
     fontconfig
     freetype
     libGL
+    skia
 
     libx11
     libice
@@ -30,6 +31,7 @@ pkgs.mkShell {
     pkgs.fontconfig
     pkgs.freetype
     pkgs.libGL
+    pkgs.skia
 
     pkgs.libx11
     pkgs.libice
@@ -48,4 +50,11 @@ pkgs.mkShell {
     pkgs.zlib
     pkgs.icu
   ];
+
+  shellHook = ''
+    if [ "$${PWD##*/}" = "Autonotki.Client" ]; then
+      echo "To run the desktop app from nix-shell:"
+      echo "  dotnet run --project Autonotki.Client.Desktop/Autonotki.Client.Desktop.csproj --runtime linux-x64"
+    fi
+  '';
 }

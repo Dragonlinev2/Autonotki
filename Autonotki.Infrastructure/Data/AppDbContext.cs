@@ -13,7 +13,7 @@ public class AppDbContext(DbContextOptions<AppDbContext> options) : DbContext(op
     {
         b.Entity<Klient>(e =>
         {
-            e.ToTable("KLIENCI");
+            e.ToTable("klienci");
             e.HasKey(x => x.IdKlient);
             e.Property(x => x.IdKlient).HasColumnName("id_klient");
             e.Property(x => x.Imie).HasColumnName("imie");
@@ -24,7 +24,7 @@ public class AppDbContext(DbContextOptions<AppDbContext> options) : DbContext(op
 
         b.Entity<Pojazd>(e =>
         {
-            e.ToTable("POJAZDY");
+            e.ToTable("pojazdy");
             e.HasKey(x => x.IdPojazd);
             e.Property(x => x.IdPojazd).HasColumnName("id_pojazd");
             e.Property(x => x.IdKlient).HasColumnName("id_klient");
@@ -39,7 +39,7 @@ public class AppDbContext(DbContextOptions<AppDbContext> options) : DbContext(op
 
         b.Entity<Zlecenie>(e =>
         {
-            e.ToTable("ZLECENIA");
+            e.ToTable("zlecenia");
             e.HasKey(x => x.IdZlecenia);
             e.Property(x => x.IdZlecenia).HasColumnName("id_zlecenia");
             e.Property(x => x.IdPojazd).HasColumnName("id_pojazd");

@@ -6,6 +6,8 @@ public class Klient
     public string Imie { get; set; } = "";
     public string Nazwisko { get; set; } = "";
     public string? NrTel { get; set; }
+    public string? Miejscowosc { get; set; }
+    public string? Adres { get; set; }
     public string? Email { get; set; }
     public ICollection<Pojazd> Pojazdy { get; set; } = [];
 }

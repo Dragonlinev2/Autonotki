@@ -1,0 +1,43 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        x:Class="PopUp.MainWindow"
+        Width="400" Height="250"
+        WindowStartupLocation="CenterScreen"
+        CanResize="False">
+
+        <Border x:Name="Root"
+            Background="{StaticResource PopupBackground}"
+            CornerRadius="10"
+            Padding="20">
+
+        <Grid RowDefinitions="Auto,Auto"
+              ColumnDefinitions="Auto,*"
+              RowSpacing="15"
+              ColumnSpacing="10">
+
+            <!-- IKONA -->
+            <TextBlock x:Name="IconText"
+                       FontSize="30"
+                       VerticalAlignment="Center"
+                       Grid.Row="0"
+                       Grid.Column="0"/>
+
+            <!-- WIADOMOŚĆ -->
+            <TextBlock x:Name="MessageText"
+                       TextWrapping="Wrap"
+                       VerticalAlignment="Center"
+                       Grid.Row="0"
+                       Grid.Column="1"/>
+
+            <!-- PRZYCISKI -->
+            <StackPanel x:Name="ButtonsPanel"
+                        Orientation="Horizontal"
+                        HorizontalAlignment="Center"
+                        Spacing="10"
+                        Grid.Row="1"
+                        Grid.ColumnSpan="2"/>
+
+        </Grid>
+    </Border>
+
+</Window>

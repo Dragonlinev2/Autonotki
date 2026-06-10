@@ -4,7 +4,7 @@
     <!-- Default TextBlock font -->
     <Style Selector="TextBlock">
         <Setter Property="FontFamily" Value="Segoe UI, Inter, Arial, sans-serif"/>
-        <Setter Property="Foreground" Value="{StaticResource TextPrimaryBrush}"/>
+        <Setter Property="Foreground" Value="{DynamicResource TextPrimaryBrush}"/>
     </Style>
 
     <!-- Default TextBox -->
@@ -15,7 +15,7 @@
     <!-- Separator line helper -->
     <Style Selector="Border.VerticalSeparator">
         <Setter Property="Width" Value="1"/>
-        <Setter Property="Background" Value="{StaticResource CardBorderBrush}"/>
+        <Setter Property="Background" Value="{DynamicResource CardBorderBrush}"/>
         <Setter Property="Margin" Value="16,0"/>
     </Style>
 
@@ -23,13 +23,13 @@
     <Style Selector="Ellipse.StatusOrange">
         <Setter Property="Width" Value="10"/>
         <Setter Property="Height" Value="10"/>
-        <Setter Property="Fill" Value="{StaticResource OrangeStatusBrush}"/>
+        <Setter Property="Fill" Value="{DynamicResource OrangeStatusBrush}"/>
     </Style>
 
     <Style Selector="Ellipse.StatusGreen">
         <Setter Property="Width" Value="10"/>
         <Setter Property="Height" Value="10"/>
-        <Setter Property="Fill" Value="{StaticResource GreenStatusBrush}"/>
+        <Setter Property="Fill" Value="{DynamicResource GreenStatusBrush}"/>
     </Style>
 
     <!-- Image placeholder -->
@@ -40,7 +40,7 @@
 
     <!-- Notification badge -->
     <Style Selector="Border.NotificationBadge">
-        <Setter Property="Background" Value="{StaticResource OrangeStatusBrush}"/>
+        <Setter Property="Background" Value="{DynamicResource OrangeStatusBrush}"/>
         <Setter Property="CornerRadius" Value="10"/>
         <Setter Property="MinWidth" Value="20"/>
         <Setter Property="Height" Value="20"/>

@@ -42,21 +42,29 @@ public partial class EdytujZlecenieViewModel : ViewModelBase
         Marka            = parts[0];
         Model            = parts.Length > 1 ? parts[1] : "";
         VIN              = z.Vin ?? "";
+        RokProdukcji     = z.CarYear ?? "";
+        TypNadwozia      = z.TypNadwozia ?? "";
+        Kolor            = z.Kolor ?? "";
         RodzajNaprawy    = z.ServiceType ?? "";
         SzacunkowyKoszt  = z.EstimatedCost ?? "";
         TerminRealizacji = z.DeadlineDisplay ?? "";
         ImieNazwisko     = z.ClientName ?? "";
         Telefon          = z.PhoneNumber ?? "";
+        Miejscowosc      = z.Miejscowosc ?? "";
+        Adres            = z.Adres ?? "";
     }
 
     [RelayCommand]
     public async Task SaveChanges()
     {
+        if (string.IsNullOrWhiteSpace(ImieNazwisko) || string.IsNullOrWhiteSpace(Marka) || string.IsNullOrWhiteSpace(Model))
+            return;
+
         var req = new CreateZlecenieRequest(
             Marka, Model, RokProdukcji, VIN, TypNadwozia, Kolor,
             RodzajNaprawy, TerminRealizacji, SzacunkowyKoszt,
             ImieNazwisko, Miejscowosc, Adres, Telefon);
-        await _api.CreateZlecenieAsync(req);
+        await _api.UpdateZlecenieAsync(_id, req);
         _main.NavigateToPrzegladaj();
     }
 }

@@ -4,6 +4,7 @@ using Avalonia.Data.Core.Plugins;
 using Avalonia.Markup.Xaml;
 using Autonotki.Client.ViewModels;
 using Autonotki.Client.Views;
+using Autonotki.Client.Services;
 using System.Linq;
 
 namespace Autonotki.Client;
@@ -21,10 +22,14 @@ public partial class App : Avalonia.Application
 
         if (ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
         {
-            desktop.MainWindow = new MainWindow
+            desktop.MainWindow = new MainWindow();
+            // Apply persisted theme
+            try
             {
-                DataContext = new MainWindowViewModel()
-            };
+                var settings = new Services.SettingsService();
+                ThemeService.Instance.ApplyTheme(settings.Settings.Theme);
+            }
+            catch { }
         }
         base.OnFrameworkInitializationCompleted();
     }

@@ -79,6 +79,9 @@ app.MapPost("/zlecenia", async (CreateZlecenieRequest req, AppDbContext db) =>
         IdKlient = klient.IdKlient,
         Marka = req.Marka,
         Model = req.Model,
+        RokProdukcji = req.RokProdukcji,
+        TypNadwozia = req.TypNadwozia,
+        Kolor = req.Kolor,
         Vin = req.Vin
     };
     db.Pojazdy.Add(pojazd);
@@ -128,6 +131,69 @@ app.MapPut("/zlecenia/{id:int}/status", async (int id, StatusUpdateRequest req, 
     if (z is null) return Results.NotFound();
     z.Status = req.Status;
     return await repo.UpdateAsync(z) ? Results.NoContent() : Results.Problem();
+});
+
+app.MapPut("/zlecenia/{id:int}", async (int id, CreateZlecenieRequest req, AppDbContext db) =>
+{
+    if (string.IsNullOrWhiteSpace(req.ImieNazwisko) || string.IsNullOrWhiteSpace(req.Marka) || string.IsNullOrWhiteSpace(req.Model))
+        return Results.BadRequest(new { message = "Imię i nazwisko oraz marka i model są wymagane" });
+
+    var z = await db.Zlecenia
+        .Include(x => x.Pojazd).ThenInclude(p => p.Klient)
+        .FirstOrDefaultAsync(x => x.IdZlecenia == id);
+    if (z is null) return Results.NotFound();
+
+    // update klient
+    var parts = req.ImieNazwisko.Trim().Split(' ', 2);
+    var imie = parts[0];
+    var nazwisko = parts.Length > 1 ? parts[1] : "";
+    var klient = z.Pojazd?.Klient;
+    if (klient is not null)
+    {
+        klient.Imie = imie;
+        klient.Nazwisko = nazwisko;
+        klient.NrTel = req.Telefon;
+        klient.Miejscowosc = req.Miejscowosc;
+        klient.Adres = req.Adres;
+    }
+
+    // update pojazd
+    if (z.Pojazd is not null)
+    {
+        z.Pojazd.Marka = req.Marka;
+        z.Pojazd.Model = req.Model;
+        z.Pojazd.Vin = req.Vin;
+        z.Pojazd.RokProdukcji = req.RokProdukcji;
+        z.Pojazd.TypNadwozia = req.TypNadwozia;
+        z.Pojazd.Kolor = req.Kolor;
+    }
+
+    // update zlecenie
+    z.Opis = req.RodzajNaprawy;
+    decimal? koszt = null;
+    if (!string.IsNullOrWhiteSpace(req.SzacunkowyKoszt) &&
+        decimal.TryParse(req.SzacunkowyKoszt, System.Globalization.NumberStyles.Any, System.Globalization.CultureInfo.InvariantCulture, out var k))
+        koszt = k;
+    z.KosztUslugi = koszt;
+
+    DateOnly? termin = null;
+    if (!string.IsNullOrWhiteSpace(req.TerminRealizacji))
+    {
+        var t = req.TerminRealizacji.Split(' ')[0].Trim();
+        var parts2 = t.Split('.');
+        if (parts2.Length >= 2 &&
+            int.TryParse(parts2[0], out var d) &&
+            int.TryParse(parts2[1], out var m))
+        {
+            var y = parts2.Length >= 3 && int.TryParse(parts2[2], out var yy)
+                ? yy : DateTime.Today.Year;
+            try { termin = new DateOnly(y, m, d); } catch { }
+        }
+    }
+    z.DataZakonczenia = termin;
+
+    await db.SaveChangesAsync();
+    return Results.NoContent();
 });
 
 app.MapDelete("/zlecenia/{id:int}", async (int id, ZlecenieRepository repo) =>
@@ -185,14 +251,18 @@ app.Run();
 static ZlecenieDto ToDto(Zlecenie z) => new(
     z.IdZlecenia,
     $"{z.Pojazd?.Marka} {z.Pojazd?.Model}".Trim(),
-    null,
+    z.Pojazd?.RokProdukcji,
     z.Pojazd?.Vin,
+    z.Pojazd?.TypNadwozia,
+    z.Pojazd?.Kolor,
     z.Opis,
     z.KosztUslugi?.ToString("F0"),
     z.Status ?? "Do zrobienia",
     z.DataZakonczenia?.ToString("dd.MM"),
     $"{z.Pojazd?.Klient?.Imie} {z.Pojazd?.Klient?.Nazwisko}".Trim(),
     z.Pojazd?.Klient?.NrTel
+    , z.Pojazd?.Klient?.Miejscowosc
+    , z.Pojazd?.Klient?.Adres
 );
 
 record LoginRequest(string Login, string Haslo);

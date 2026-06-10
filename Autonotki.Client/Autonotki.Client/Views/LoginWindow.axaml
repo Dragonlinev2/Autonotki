@@ -1,0 +1,25 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="https://github.com/avaloniaui/designer"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        x:Class="Autonotki.Client.Views.LoginWindow"
+        Title="Logowanie"
+        Width="420" Height="300"
+        CanResize="False"
+        WindowStartupLocation="CenterOwner"
+        mc:Ignorable="d">
+
+    <Border Background="White" CornerRadius="8" Padding="20" Margin="10">
+        <StackPanel Spacing="12">
+            <TextBlock Text="Zaloguj się do systemu" FontSize="20" FontWeight="Bold"/>
+            <TextBlock Text="Login"/>
+            <TextBox Text="{Binding Login, Mode=TwoWay}" Watermark="wpisz login"/>
+            <TextBlock Text="Hasło"/>
+            <TextBox Text="{Binding Password, Mode=TwoWay}" PasswordChar="*" Watermark="wpisz hasło"/>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Spacing="8">
+                <Button Content="Zaloguj" Click="LoginButton_Click" IsDefault="True"/>
+                <Button Content="Anuluj" Click="CancelButton_Click"/>
+            </StackPanel>
+        </StackPanel>
+    </Border>
+</Window>

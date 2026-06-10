@@ -5,12 +5,16 @@ public record ZlecenieDto(
     string CarName,
     string? CarYear,
     string? Vin,
+    string? TypNadwozia,
+    string? Kolor,
     string? ServiceType,
     string? EstimatedCost,
     string? Status,
     string? DeadlineDisplay,
     string? ClientName,
     string? PhoneNumber
+    , string? Miejscowosc
+    , string? Adres
 );
 
 public record CreateZlecenieRequest(

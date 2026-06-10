@@ -1,0 +1,30 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        x:Class="Autonotki.Client.Views.ErrorPopup"
+        Width="400" Height="200"
+        WindowStartupLocation="CenterOwner"
+        CanResize="False"
+        Title="Błąd">
+
+        <Border x:Name="Root"
+            Background="#FFFFE0"
+            CornerRadius="8"
+            Padding="20">
+
+        <StackPanel Spacing="15">
+            <StackPanel Orientation="Horizontal" Spacing="10">
+                <TextBlock Text="❌" FontSize="24" VerticalAlignment="Top"/>
+                <TextBlock x:Name="MessageText"
+                           TextWrapping="Wrap"
+                           VerticalAlignment="Center"
+                           FontSize="14"/>
+            </StackPanel>
+
+            <Button Content="OK" 
+                    HorizontalAlignment="Center"
+                    Width="100"
+                    Click="OkButton_Click"/>
+        </StackPanel>
+    </Border>
+
+</Window>

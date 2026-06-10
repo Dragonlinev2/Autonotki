@@ -11,7 +11,7 @@ public partial class TopNavBarViewModel(MainWindowViewModel main) : ViewModelBas
     [RelayCommand] public void NavigateToEdytujCommand()     => main.NavigateToPrzegladaj();
     [RelayCommand] public void NavigateToPrzegladajCommand() => main.NavigateToPrzegladaj();
     [RelayCommand] public void NavigateToKalendarzCommand()  => main.NavigateToKalendarz();
-    [RelayCommand] public void NavigateToUstawieniaCommand() { }
+    [RelayCommand] public void NavigateToUstawieniaCommand() { main.NavigateToUstawienia(); }
     [RelayCommand] public void OpenNotificationsCommand()    { }
     [RelayCommand] public void OpenProfileCommand()          { }
 }

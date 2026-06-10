@@ -66,7 +66,7 @@
     <!-- Outline / "Szczegóły" Button -->
     <ControlTheme x:Key="OutlineButtonStyle" TargetType="Button">
         <Setter Property="Background" Value="Transparent"/>
-        <Setter Property="Foreground" Value="{StaticResource TextPrimaryBrush}"/>
+        <Setter Property="Foreground" Value="{DynamicResource TextPrimaryBrush}"/>
         <Setter Property="FontSize" Value="13"/>
         <Setter Property="Padding" Value="14,6"/>
         <Setter Property="CornerRadius" Value="16"/>
@@ -89,7 +89,7 @@
             </ControlTemplate>
         </Setter>
         <Style Selector="^:pointerover /template/ Border">
-            <Setter Property="Background" Value="{StaticResource PageBackground}"/>
+            <Setter Property="Background" Value="{DynamicResource PageBackground}"/>
         </Style>
     </ControlTheme>
 
@@ -149,7 +149,7 @@
     <!-- Filter Button (unselected) -->
     <ControlTheme x:Key="FilterButtonStyle" TargetType="Button">
         <Setter Property="Background" Value="Transparent"/>
-        <Setter Property="Foreground" Value="{StaticResource TextPrimaryBrush}"/>
+        <Setter Property="Foreground" Value="{DynamicResource TextPrimaryBrush}"/>
         <Setter Property="FontSize" Value="13"/>
         <Setter Property="Padding" Value="16,8"/>
         <Setter Property="CornerRadius" Value="6"/>
@@ -172,7 +172,7 @@
             </ControlTemplate>
         </Setter>
         <Style Selector="^:pointerover /template/ Border">
-            <Setter Property="Background" Value="{StaticResource PageBackground}"/>
+            <Setter Property="Background" Value="{DynamicResource PageBackground}"/>
         </Style>
     </ControlTheme>
 
@@ -206,7 +206,7 @@
     <!-- Calendar Nav Arrow Button -->
     <ControlTheme x:Key="CalendarArrowStyle" TargetType="Button">
         <Setter Property="Background" Value="Transparent"/>
-        <Setter Property="Foreground" Value="{StaticResource TextPrimaryBrush}"/>
+        <Setter Property="Foreground" Value="{DynamicResource TextPrimaryBrush}"/>
         <Setter Property="FontSize" Value="20"/>
         <Setter Property="FontWeight" Value="Bold"/>
         <Setter Property="Padding" Value="12,6"/>
@@ -227,7 +227,7 @@
             </ControlTemplate>
         </Setter>
         <Style Selector="^:pointerover /template/ Border">
-            <Setter Property="Background" Value="{StaticResource PageBackground}"/>
+            <Setter Property="Background" Value="{DynamicResource PageBackground}"/>
         </Style>
     </ControlTheme>
 
@@ -241,7 +241,7 @@
         <Setter Property="CornerRadius" Value="4"/>
         <Setter Property="Padding" Value="10,7"/>
         <Setter Property="FontSize" Value="14"/>
-        <Setter Property="Foreground" Value="{StaticResource TextPrimaryBrush}"/>
+        <Setter Property="Foreground" Value="{DynamicResource TextPrimaryBrush}"/>
         <Setter Property="MinHeight" Value="34"/>
         <Style Selector="^:focus /template/ Border#PART_BorderElement">
             <Setter Property="BorderBrush" Value="{StaticResource NavyBlueBrush}"/>
@@ -252,7 +252,7 @@
          CARD PANEL
     ============================================================ -->
     <ControlTheme x:Key="CardStyle" TargetType="Border">
-        <Setter Property="Background" Value="{StaticResource CardBackgroundBrush}"/>
+        <Setter Property="Background" Value="{DynamicResource CardBackgroundBrush}"/>
         <Setter Property="BorderBrush" Value="{StaticResource CardBorderBrush}"/>
         <Setter Property="BorderThickness" Value="1"/>
         <Setter Property="CornerRadius" Value="10"/>

@@ -19,6 +19,8 @@ public class AppDbContext(DbContextOptions<AppDbContext> options) : DbContext(op
             e.Property(x => x.Imie).HasColumnName("imie");
             e.Property(x => x.Nazwisko).HasColumnName("nazwisko");
             e.Property(x => x.NrTel).HasColumnName("nr_tel");
+            e.Property(x => x.Miejscowosc).HasColumnName("miejscowosc");
+            e.Property(x => x.Adres).HasColumnName("adres");
             e.Property(x => x.Email).HasColumnName("email");
         });
 
@@ -30,6 +32,9 @@ public class AppDbContext(DbContextOptions<AppDbContext> options) : DbContext(op
             e.Property(x => x.IdKlient).HasColumnName("id_klient");
             e.Property(x => x.Marka).HasColumnName("marka");
             e.Property(x => x.Model).HasColumnName("model");
+            e.Property(x => x.RokProdukcji).HasColumnName("rok_produkcji");
+            e.Property(x => x.TypNadwozia).HasColumnName("typ_nadwozia");
+            e.Property(x => x.Kolor).HasColumnName("kolor");
             e.Property(x => x.NrRejestracyjny).HasColumnName("nr_rejestracyjny");
             e.Property(x => x.Vin).HasColumnName("vin");
             e.HasOne(x => x.Klient)

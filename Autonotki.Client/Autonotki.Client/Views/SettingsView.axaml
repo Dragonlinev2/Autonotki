@@ -1,0 +1,43 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="clr-namespace:Autonotki.Client.ViewModels"
+             x:Class="Autonotki.Client.Views.SettingsView">
+
+    <Design.DataContext>
+        <vm:SettingsViewModel/>
+    </Design.DataContext>
+
+    <Border Padding="20" Background="{StaticResource CardBackgroundBrush}" CornerRadius="8">
+        <StackPanel Spacing="12">
+            <TextBlock Text="Ustawienia" FontSize="18" FontWeight="Bold"/>
+
+            <StackPanel Orientation="Horizontal" Spacing="8" VerticalAlignment="Center">
+                <TextBlock Text="Motyw:" VerticalAlignment="Center" Width="80"/>
+                <ComboBox ItemsSource="{Binding AvailableThemes}" SelectedItem="{Binding SelectedTheme}" Width="160"/>
+                <Button Content="Zapisz" Command="{Binding SaveCommand}"/>
+                <Button Content="Anuluj" Command="{Binding CancelCommand}"/>
+            </StackPanel>
+
+            <!-- Playful dummy options (do not need to function) -->
+            <StackPanel Spacing="8">
+                <CheckBox Content="Enable confetti (totally serious)" IsChecked="{Binding EnableConfetti}"/>
+
+                <StackPanel Orientation="Horizontal" Spacing="8" VerticalAlignment="Center">
+                    <TextBlock Text="Favorite unicorn:" VerticalAlignment="Center" Width="120"/>
+                    <TextBox Text="{Binding FavoriteUnicorn}" Width="160"/>
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal" Spacing="8" VerticalAlignment="Center">
+                    <TextBlock Text="Silly number:" VerticalAlignment="Center" Width="120"/>
+                    <TextBox Text="{Binding SillyNumber}" Width="80"/>
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal" Spacing="8" VerticalAlignment="Center">
+                    <TextBlock Text="Easter egg:" VerticalAlignment="Center" Width="120"/>
+                    <ComboBox ItemsSource="{Binding EasterEggOptions}" SelectedItem="{Binding SelectedEasterEgg}" Width="160"/>
+                </StackPanel>
+            </StackPanel>
+        </StackPanel>
+    </Border>
+
+</UserControl>

@@ -7,8 +7,8 @@
           CarName, ServiceType, Time, ClientName
     -->
 
-    <Border Background="{StaticResource CardBackgroundBrush}"
-            BorderBrush="{StaticResource CardBorderBrush}"
+        <Border Background="{DynamicResource CardBackgroundBrush}"
+            BorderBrush="{DynamicResource CardBorderBrush}"
             BorderThickness="1"
             CornerRadius="8"
             Padding="16,12"
@@ -23,10 +23,10 @@
                 <TextBlock Text="{Binding CarName}"
                            FontSize="15"
                            FontWeight="Bold"
-                           Foreground="{StaticResource TextPrimaryBrush}"/>
+                           Foreground="{DynamicResource TextPrimaryBrush}"/>
                 <TextBlock Text="{Binding ServiceType}"
                            FontSize="13"
-                           Foreground="{StaticResource TextSecondaryBrush}"
+                           Foreground="{DynamicResource TextSecondaryBrush}"
                            TextWrapping="Wrap"/>
             </StackPanel>
 
@@ -42,10 +42,10 @@
                 <TextBlock Text="{Binding TimeDisplay}"
                            FontSize="14"
                            FontWeight="SemiBold"
-                           Foreground="{StaticResource TextPrimaryBrush}"/>
+                           Foreground="{DynamicResource TextPrimaryBrush}"/>
                 <TextBlock Text="{Binding ClientName}"
                            FontSize="13"
-                           Foreground="{StaticResource TextSecondaryBrush}"/>
+                           Foreground="{DynamicResource TextSecondaryBrush}"/>
             </StackPanel>
 
         </Grid>

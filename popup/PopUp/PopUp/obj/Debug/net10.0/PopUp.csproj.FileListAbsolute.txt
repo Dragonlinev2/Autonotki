@@ -1,0 +1,14 @@
+/home/oliwier/Code/dotnet/PopUp/PopUp/obj/Debug/net10.0/PopUp.csproj.AssemblyReference.cache
+/home/oliwier/Code/dotnet/PopUp/PopUp/obj/Debug/net10.0/Avalonia/Resources.Inputs.cache
+/home/oliwier/Code/dotnet/PopUp/PopUp/obj/Debug/net10.0/Avalonia/resources
+/home/oliwier/Code/dotnet/PopUp/PopUp/obj/Debug/net10.0/PopUp.GeneratedMSBuildEditorConfig.editorconfig
+/home/oliwier/Code/dotnet/PopUp/PopUp/obj/Debug/net10.0/PopUp.AssemblyInfoInputs.cache
+/home/oliwier/Code/dotnet/PopUp/PopUp/obj/Debug/net10.0/PopUp.AssemblyInfo.cs
+/home/oliwier/Code/dotnet/PopUp/PopUp/obj/Debug/net10.0/PopUp.csproj.CoreCompileInputs.cache
+/home/oliwier/Code/dotnet/PopUp/PopUp/bin/Debug/net10.0/PopUp.deps.json
+/home/oliwier/Code/dotnet/PopUp/PopUp/bin/Debug/net10.0/PopUp.dll
+/home/oliwier/Code/dotnet/PopUp/PopUp/bin/Debug/net10.0/PopUp.pdb
+/home/oliwier/Code/dotnet/PopUp/PopUp/obj/Debug/net10.0/PopUp.dll
+/home/oliwier/Code/dotnet/PopUp/PopUp/obj/Debug/net10.0/refint/PopUp.dll
+/home/oliwier/Code/dotnet/PopUp/PopUp/obj/Debug/net10.0/PopUp.pdb
+/home/oliwier/Code/dotnet/PopUp/PopUp/obj/Debug/net10.0/ref/PopUp.dll

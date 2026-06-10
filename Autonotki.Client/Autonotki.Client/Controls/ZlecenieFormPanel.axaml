@@ -76,8 +76,15 @@
                     <TextBlock Grid.Row="1" Grid.Column="0" Text="Imię i nazwisko"
                                FontSize="13" Foreground="{StaticResource TextSecondaryBrush}"
                                VerticalAlignment="Center" Margin="0,0,12,0"/>
-                    <TextBox Grid.Row="1" Grid.Column="1"
-                             Text="{Binding ImieNazwisko}" Height="34" MinHeight="34" MaxHeight="34"/>
+                    <StackPanel Grid.Row="1" Grid.Column="1" Spacing="6">
+                        <TextBox Text="{Binding ImieNazwisko}" Height="34" MinHeight="34" MaxHeight="34"/>
+                        <Border Background="#F8D7DA" BorderBrush="#F5C2C7" CornerRadius="6" Padding="8" IsVisible="{Binding ImieNazwiskoHasError}">
+                            <StackPanel Orientation="Horizontal" Spacing="8">
+                                <TextBlock Text="⚠" FontSize="14" VerticalAlignment="Center"/>
+                                <TextBlock Text="{Binding ImieNazwiskoError}" Foreground="#7A1F26" TextWrapping="Wrap"/>
+                            </StackPanel>
+                        </Border>
+                    </StackPanel>
 
                     <TextBlock Grid.Row="2" Grid.Column="0" Text="Adres"
                                FontSize="13" Foreground="{StaticResource TextSecondaryBrush}"
@@ -88,8 +95,15 @@
                     <TextBlock Grid.Row="3" Grid.Column="0" Text="Telefon"
                                FontSize="13" Foreground="{StaticResource TextSecondaryBrush}"
                                VerticalAlignment="Center" Margin="0,0,12,0"/>
-                    <TextBox Grid.Row="3" Grid.Column="1"
-                             Text="{Binding Telefon}" Height="34" MinHeight="34" MaxHeight="34"/>
+                    <StackPanel Grid.Row="3" Grid.Column="1" Spacing="6">
+                        <TextBox Text="{Binding Telefon}" Height="34" MinHeight="34" MaxHeight="34"/>
+                        <Border Background="#F8D7DA" BorderBrush="#F5C2C7" CornerRadius="6" Padding="8" IsVisible="{Binding TelefonHasError}">
+                            <StackPanel Orientation="Horizontal" Spacing="8">
+                                <TextBlock Text="⚠" FontSize="14" VerticalAlignment="Center"/>
+                                <TextBlock Text="{Binding TelefonError}" Foreground="#7A1F26" TextWrapping="Wrap"/>
+                            </StackPanel>
+                        </Border>
+                    </StackPanel>
                 </Grid>
 
                 <!-- Car info section -->
@@ -97,8 +111,15 @@
                     <TextBlock Grid.Row="0" Grid.Column="0" Text="Marka"
                                FontSize="13" Foreground="{StaticResource TextSecondaryBrush}"
                                VerticalAlignment="Center"/>
-                    <TextBox Grid.Row="0" Grid.Column="1"
-                             Text="{Binding Marka}" Height="34" MinHeight="34" MaxHeight="34"/>
+                    <StackPanel Grid.Row="0" Grid.Column="1" Spacing="6">
+                        <TextBox Text="{Binding Marka}" Height="34" MinHeight="34" MaxHeight="34"/>
+                        <Border Background="#F8D7DA" BorderBrush="#F5C2C7" CornerRadius="6" Padding="8" IsVisible="{Binding MarkaHasError}">
+                            <StackPanel Orientation="Horizontal" Spacing="8">
+                                <TextBlock Text="⚠" FontSize="14" VerticalAlignment="Center"/>
+                                <TextBlock Text="{Binding MarkaError}" Foreground="#7A1F26" TextWrapping="Wrap"/>
+                            </StackPanel>
+                        </Border>
+                    </StackPanel>
 
                     <TextBlock Grid.Row="0" Grid.Column="2" Text="Kolor"
                                FontSize="13" Foreground="{StaticResource TextSecondaryBrush}"
@@ -109,8 +130,15 @@
                     <TextBlock Grid.Row="1" Grid.Column="0" Text="Model"
                                FontSize="13" Foreground="{StaticResource TextSecondaryBrush}"
                                VerticalAlignment="Center"/>
-                    <TextBox Grid.Row="1" Grid.Column="1"
-                             Text="{Binding Model}" Height="34" MinHeight="34" MaxHeight="34"/>
+                    <StackPanel Grid.Row="1" Grid.Column="1" Spacing="6">
+                        <TextBox Text="{Binding Model}" Height="34" MinHeight="34" MaxHeight="34"/>
+                        <Border Background="#F8D7DA" BorderBrush="#F5C2C7" CornerRadius="6" Padding="8" IsVisible="{Binding ModelHasError}">
+                            <StackPanel Orientation="Horizontal" Spacing="8">
+                                <TextBlock Text="⚠" FontSize="14" VerticalAlignment="Center"/>
+                                <TextBlock Text="{Binding ModelError}" Foreground="#7A1F26" TextWrapping="Wrap"/>
+                            </StackPanel>
+                        </Border>
+                    </StackPanel>
 
                     <TextBlock Grid.Row="1" Grid.Column="2" Text="Rodzaj naprawy"
                                FontSize="13" Foreground="{StaticResource TextSecondaryBrush}"
@@ -124,8 +152,15 @@
                     <TextBlock Grid.Row="0" Grid.Column="0" Text="Rok produkcji"
                                FontSize="13" Foreground="{StaticResource TextSecondaryBrush}"
                                VerticalAlignment="Center"/>
-                    <TextBox Grid.Row="0" Grid.Column="1"
-                             Text="{Binding RokProdukcji}" Height="34" MinHeight="34" MaxHeight="34"/>
+                    <StackPanel Grid.Row="0" Grid.Column="1" Spacing="6">
+                        <TextBox Text="{Binding RokProdukcji}" Height="34" MinHeight="34" MaxHeight="34"/>
+                        <Border Background="#F8D7DA" BorderBrush="#F5C2C7" CornerRadius="6" Padding="8" IsVisible="{Binding RokProdukcjiHasError}">
+                            <StackPanel Orientation="Horizontal" Spacing="8">
+                                <TextBlock Text="⚠" FontSize="14" VerticalAlignment="Center"/>
+                                <TextBlock Text="{Binding RokProdukcjiError}" Foreground="#7A1F26" TextWrapping="Wrap"/>
+                            </StackPanel>
+                        </Border>
+                    </StackPanel>
 
                     <TextBlock Grid.Row="0" Grid.Column="2" Text="Termin realizacji"
                                FontSize="13" Foreground="{StaticResource TextSecondaryBrush}"

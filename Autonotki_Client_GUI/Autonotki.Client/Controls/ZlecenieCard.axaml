@@ -10,8 +10,8 @@
           StatusText, IsOrange, IsGreen
     -->
 
-    <Border Background="{StaticResource CardBackgroundBrush}"
-            BorderBrush="{StaticResource CardBorderBrush}"
+        <Border Background="{DynamicResource CardBackgroundBrush}"
+            BorderBrush="{DynamicResource CardBorderBrush}"
             BorderThickness="1"
             CornerRadius="10"
             Margin="0,0,0,14">
@@ -47,24 +47,24 @@
                     <TextBlock Text="{Binding CarName}"
                                FontSize="17"
                                FontWeight="Bold"
-                               Foreground="{StaticResource TextPrimaryBrush}"/>
+                               Foreground="{DynamicResource TextPrimaryBrush}"/>
                     <TextBlock FontSize="13"
-                               Foreground="{StaticResource TextSecondaryBrush}">
+                               Foreground="{DynamicResource TextSecondaryBrush}">
                         <Run Text="Rocznik: "/>
                         <Run Text="{Binding CarYear}"/>
                     </TextBlock>
                     <TextBlock FontSize="13"
-                               Foreground="{StaticResource TextSecondaryBrush}">
+                               Foreground="{DynamicResource TextSecondaryBrush}">
                         <Run Text="VIN: "/>
                         <Run Text="{Binding VIN}"/>
                     </TextBlock>
                     <TextBlock FontSize="13"
-                               Foreground="{StaticResource TextSecondaryBrush}">
+                               Foreground="{DynamicResource TextSecondaryBrush}">
                         <Run Text="Rodzaj naprawy: "/>
                         <Run Text="{Binding ServiceType}"/>
                     </TextBlock>
                     <TextBlock FontSize="13"
-                               Foreground="{StaticResource TextSecondaryBrush}">
+                               Foreground="{DynamicResource TextSecondaryBrush}">
                         <Run Text="Szacunkowy koszt: "/>
                         <Run Text="{Binding EstimatedCost}"/>
                         <Run Text="zł"/>
@@ -112,17 +112,17 @@
                         MinWidth="160"
                         Spacing="5">
                 <TextBlock FontSize="14"
-                           Foreground="{StaticResource TextPrimaryBrush}">
+                           Foreground="{DynamicResource TextPrimaryBrush}">
                     <Run Text="Termin: "/>
                     <Run Text="{Binding DeadlineDisplay}" FontWeight="SemiBold"/>
                 </TextBlock>
                 <TextBlock FontSize="14"
-                           Foreground="{StaticResource TextPrimaryBrush}">
+                           Foreground="{DynamicResource TextPrimaryBrush}">
                     <Run Text="Klient: "/>
                     <Run Text="{Binding ClientName}" FontWeight="SemiBold"/>
                 </TextBlock>
                 <TextBlock FontSize="14"
-                           Foreground="{StaticResource TextPrimaryBrush}">
+                           Foreground="{DynamicResource TextPrimaryBrush}">
                     <Run Text="Telefon: "/>
                     <Run Text="{Binding PhoneNumber}"/>
                 </TextBlock>

@@ -3,3 +3,5 @@ docker compose up -d
 dotnet run --project Autonotki.Api/Autonotki.Api.csproj --urls "http://localhost:5000"
 
 dotnet run --project Autonotki.Client/Autonotki.Client.Desktop/Autonotki.Client.Desktop.csproj --runtime linux-x64
+
+admin test123

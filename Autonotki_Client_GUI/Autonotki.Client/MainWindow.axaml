@@ -6,7 +6,7 @@
         Title="Autonotki"
         MinWidth="1024"
         MinHeight="680"
-        Background="{StaticResource PageBackgroundBrush}"
+        Background="{DynamicResource PageBackgroundBrush}"
         ExtendClientAreaToDecorationsHint="False">
 
     <!--
@@ -32,6 +32,9 @@
             </DataTemplate>
             <DataTemplate DataType="{x:Type vm:EdytujZlecenieViewModel}">
                 <views:EdytujZlecenieView/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type vm:SettingsViewModel}">
+                <views:SettingsView/>
             </DataTemplate>
         </ContentControl.DataTemplates>
     </ContentControl>

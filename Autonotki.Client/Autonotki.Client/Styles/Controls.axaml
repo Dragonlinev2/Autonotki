@@ -7,7 +7,7 @@
 
     <!-- Orange / "W toku" Button -->
     <ControlTheme x:Key="OrangeButtonStyle" TargetType="Button">
-        <Setter Property="Background" Value="{StaticResource OrangeStatusBrush}"/>
+        <Setter Property="Background" Value="{DynamicResource OrangeStatusBrush}"/>
         <Setter Property="Foreground" Value="White"/>
         <Setter Property="FontSize" Value="13"/>
         <Setter Property="FontWeight" Value="SemiBold"/>
@@ -30,13 +30,13 @@
             </ControlTemplate>
         </Setter>
         <Style Selector="^:pointerover /template/ Border">
-            <Setter Property="Background" Value="{StaticResource OrangeDark}"/>
+                <Setter Property="Background" Value="{DynamicResource OrangeDark}"/>
         </Style>
     </ControlTheme>
 
     <!-- Green / "Zrobione" Button -->
     <ControlTheme x:Key="GreenButtonStyle" TargetType="Button">
-        <Setter Property="Background" Value="{StaticResource GreenStatusBrush}"/>
+        <Setter Property="Background" Value="{DynamicResource GreenStatusBrush}"/>
         <Setter Property="Foreground" Value="White"/>
         <Setter Property="FontSize" Value="13"/>
         <Setter Property="FontWeight" Value="SemiBold"/>
@@ -59,14 +59,14 @@
             </ControlTemplate>
         </Setter>
         <Style Selector="^:pointerover /template/ Border">
-            <Setter Property="Background" Value="{StaticResource GreenDark}"/>
+                <Setter Property="Background" Value="{DynamicResource GreenDark}"/>
         </Style>
     </ControlTheme>
 
     <!-- Outline / "Szczegóły" Button -->
     <ControlTheme x:Key="OutlineButtonStyle" TargetType="Button">
         <Setter Property="Background" Value="Transparent"/>
-        <Setter Property="Foreground" Value="{StaticResource TextPrimaryBrush}"/>
+        <Setter Property="Foreground" Value="{DynamicResource TextPrimaryBrush}"/>
         <Setter Property="FontSize" Value="13"/>
         <Setter Property="Padding" Value="14,6"/>
         <Setter Property="CornerRadius" Value="16"/>
@@ -89,13 +89,13 @@
             </ControlTemplate>
         </Setter>
         <Style Selector="^:pointerover /template/ Border">
-            <Setter Property="Background" Value="{StaticResource PageBackground}"/>
+                <Setter Property="Background" Value="{DynamicResource PageBackground}"/>
         </Style>
     </ControlTheme>
 
     <!-- Primary / "Zapisz" Button -->
     <ControlTheme x:Key="PrimaryButtonStyle" TargetType="Button">
-        <Setter Property="Background" Value="{StaticResource NavyBlueBrush}"/>
+        <Setter Property="Background" Value="{DynamicResource NavyBlueBrush}"/>
         <Setter Property="Foreground" Value="White"/>
         <Setter Property="FontSize" Value="14"/>
         <Setter Property="FontWeight" Value="SemiBold"/>
@@ -118,7 +118,7 @@
             </ControlTemplate>
         </Setter>
         <Style Selector="^:pointerover /template/ Border">
-            <Setter Property="Background" Value="{StaticResource NavyBlueDarkBrush}"/>
+                <Setter Property="Background" Value="{DynamicResource NavyBlueDarkBrush}"/>
         </Style>
     </ControlTheme>
 
@@ -149,7 +149,7 @@
     <!-- Filter Button (unselected) -->
     <ControlTheme x:Key="FilterButtonStyle" TargetType="Button">
         <Setter Property="Background" Value="Transparent"/>
-        <Setter Property="Foreground" Value="{StaticResource TextPrimaryBrush}"/>
+        <Setter Property="Foreground" Value="{DynamicResource TextPrimaryBrush}"/>
         <Setter Property="FontSize" Value="13"/>
         <Setter Property="Padding" Value="16,8"/>
         <Setter Property="CornerRadius" Value="6"/>
@@ -172,7 +172,7 @@
             </ControlTemplate>
         </Setter>
         <Style Selector="^:pointerover /template/ Border">
-            <Setter Property="Background" Value="{StaticResource PageBackground}"/>
+                <Setter Property="Background" Value="{DynamicResource PageBackground}"/>
         </Style>
     </ControlTheme>
 
@@ -235,7 +235,7 @@
          TEXT INPUT
     ============================================================ -->
     <ControlTheme x:Key="FormInputStyle" TargetType="TextBox">
-        <Setter Property="Background" Value="{StaticResource InputBackgroundBrush}"/>
+        <Setter Property="Background" Value="{DynamicResource InputBackgroundBrush}"/>
         <Setter Property="BorderBrush" Value="{StaticResource InputBorderBrush}"/>
         <Setter Property="BorderThickness" Value="1"/>
         <Setter Property="CornerRadius" Value="4"/>
@@ -252,7 +252,7 @@
          CARD PANEL
     ============================================================ -->
     <ControlTheme x:Key="CardStyle" TargetType="Border">
-        <Setter Property="Background" Value="{StaticResource CardBackgroundBrush}"/>
+        <Setter Property="Background" Value="{DynamicResource CardBackgroundBrush}"/>
         <Setter Property="BorderBrush" Value="{StaticResource CardBorderBrush}"/>
         <Setter Property="BorderThickness" Value="1"/>
         <Setter Property="CornerRadius" Value="10"/>

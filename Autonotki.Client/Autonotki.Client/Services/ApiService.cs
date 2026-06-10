@@ -12,6 +12,23 @@ public class ApiService
         _http = new HttpClient { BaseAddress = new Uri("http://localhost:5000") };
     }
 
+    public async Task<string?> LoginAsync(string login, string haslo)
+    {
+        try
+        {
+            var response = await _http.PostAsJsonAsync("/login", new { Login = login, Haslo = haslo });
+            if (!response.IsSuccessStatusCode)
+                return null;
+
+            var payload = await response.Content.ReadFromJsonAsync<LoginResponse>();
+            return payload?.rola;
+        }
+        catch
+        {
+            return null;
+        }
+    }
+
     public async Task<List<ZlecenieDto>> GetZleceniaAsync()
     {
         try { return await _http.GetFromJsonAsync<List<ZlecenieDto>>("/zlecenia") ?? []; }
@@ -27,9 +44,14 @@ public class ApiService
     public Task<HttpResponseMessage> CreateZlecenieAsync(CreateZlecenieRequest req) =>
         _http.PostAsJsonAsync("/zlecenia", req);
 
+    public Task<HttpResponseMessage> UpdateZlecenieAsync(int id, CreateZlecenieRequest req) =>
+        _http.PutAsJsonAsync($"/zlecenia/{id}", req);
+
     public Task<HttpResponseMessage> UpdateStatusAsync(int id, string status) =>
         _http.PutAsJsonAsync($"/zlecenia/{id}/status", new StatusUpdateRequest(status));
 
     public Task<HttpResponseMessage> DeleteZlecenieAsync(int id) =>
         _http.DeleteAsync($"/zlecenia/{id}");
+
+    private sealed record LoginResponse(string message, string rola);
 }
